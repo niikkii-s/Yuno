@@ -7,8 +7,9 @@ body{
     display:flex;
     justify-content:center;
     align-items:center;
-    height:100vh;
+    min-height:100vh;
     position:relative;
+    padding:30px 0;
 }
 
 body::before{
@@ -28,32 +29,60 @@ body::before{
 
     background:white;
     padding:40px;
-    border-radius:15px;
+    border-radius:20px;
     display:flex;
     flex-direction:column;
     gap:15px;
-    width:300px;
+    width:340px;
     text-align:center;
+
+    box-shadow:0 10px 30px rgba(0,0,0,0.2);
 }
 
-input{
+h2{
+    margin-bottom:10px;
+    color:#4f6f1d;
+}
+
+/* INPUTS Y SELECT */
+
+input,
+select{
     padding:12px;
     border-radius:10px;
     border:1px solid #ccc;
+    font-size:15px;
+    outline:none;
 }
+
+/* BOTÓN */
 
 .btn{
     padding:12px;
     border:none;
-    border-radius:20px;
+    border-radius:25px;
     background:#6b8e23;
     color:white;
     cursor:pointer;
+    font-size:16px;
+    margin-top:10px;
+    transition:0.3s;
 }
 
 .btn:hover{
     background:#5d7d1f;
 }
+
+.fila{
+    display:flex;
+    gap:10px;
+}
+
+.fila input{
+    width:50%;
+}
+
+/* LINK */
 
 a{
     margin-top:10px;

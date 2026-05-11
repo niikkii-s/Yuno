@@ -9,6 +9,12 @@ html{
     scroll-behavior: smooth;
 }
 
+.pacifico-regular {
+  font-family: "Pacifico", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
 /* HERO */
 
 .hero{
@@ -56,7 +62,7 @@ html{
     z-index:2;
 }
 
-.logo{
+.logo-text{
     width:110px;
     font-family: "Pacifico";
 }
@@ -82,19 +88,12 @@ html{
     list-style:none;
 }
 
-/* LINKS CON CONTORNO VERDE */
-
-.menu a{
-    text-decoration:none;
-    color:white;
-    font-weight:600;
-    font-size:18px;
-
-    text-shadow:
-        -2px -2px 0 #7cb342,
-         2px -2px 0 #7cb342,
-        -2px  2px 0 #7cb342,
-         2px  2px 0 #7cb342;
+/* LINKS */ 
+.menu a{ 
+    text-decoration:none; 
+    color:white; 
+    font-weight:600; 
+    font-size:18px; 
 }
 
 /* BOTÓN LOGIN */
