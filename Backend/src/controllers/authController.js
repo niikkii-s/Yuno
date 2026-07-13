@@ -1,46 +1,58 @@
-const fs = require("fs");
-const path = require("path");
-
-const filePath = path.join(__dirname, "../data/users.json");
+const db = require("../config/db");
 
 const register = (req, res) => {
+  console.log(req.body);
+
   const { nombre, correo, contraseña } = req.body;
 
-  const users = JSON.parse(fs.readFileSync(filePath, "utf8"));
+  const sql = `
+    INSERT INTO usuarios (nombre, correo, contraseña)
+    VALUES (?, ?, ?)
+  `;
 
-  users.push({
-    nombre,
-    correo,
-    contraseña
-  });
+  db.query(sql, [nombre, correo, contraseña], (err, result) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json({
+        mensaje: "Error al registrar el usuario"
+      });
+    }
 
-  fs.writeFileSync(filePath, JSON.stringify(users, null, 2));
-
-  res.status(201).json({
-    mensaje: "Usuario registrado correctamente"
+    res.status(201).json({
+      mensaje: "Usuario registrado correctamente"
+    });
   });
 };
 
 const login = (req, res) => {
   const { correo, contraseña } = req.body;
 
-  const users = JSON.parse(fs.readFileSync(filePath, "utf8"));
+  const sql = `
+    SELECT * FROM usuarios
+    WHERE correo = ? AND contraseña = ?
+  `;
 
-  const user = users.find(
-    (u) => u.correo === correo && u.contraseña === contraseña
-  );
+  db.query(sql, [correo, contraseña], (err, results) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json({
+        mensaje: "Error al iniciar sesión"
+      });
+    }
 
-  if (!user) {
-    return res.status(401).json({
-      mensaje: "Correo o contraseña incorrectos"
+    if (results.length === 0) {
+      return res.status(401).json({
+        mensaje: "Correo o contraseña incorrectos"
+      });
+    }
+
+    res.json({
+      mensaje: "Inicio de sesión exitoso",
+      usuario: results[0].nombre
     });
-  }
-
-  res.json({
-    mensaje: "Inicio de sesión exitoso",
-    usuario: user.nombre
   });
 };
+
 module.exports = {
   register,
   login
