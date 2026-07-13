@@ -8,6 +8,9 @@ const authController = require("../controllers/authController");
 // Registrar usuario
 router.post("/register", authController.register);
 
+// Iniciar sesión
+router.post("/login", authController.login);
+
 // Ruta de prueba
 router.get("/", (req, res) => {
   res.json({

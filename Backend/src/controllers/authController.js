@@ -21,6 +21,27 @@ const register = (req, res) => {
   });
 };
 
+const login = (req, res) => {
+  const { correo, contraseña } = req.body;
+
+  const users = JSON.parse(fs.readFileSync(filePath, "utf8"));
+
+  const user = users.find(
+    (u) => u.correo === correo && u.contraseña === contraseña
+  );
+
+  if (!user) {
+    return res.status(401).json({
+      mensaje: "Correo o contraseña incorrectos"
+    });
+  }
+
+  res.json({
+    mensaje: "Inicio de sesión exitoso",
+    usuario: user.nombre
+  });
+};
 module.exports = {
-  register
+  register,
+  login
 };
