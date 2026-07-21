@@ -359,3 +359,84 @@ textarea{
     color:#666;
     line-height:1.5;
 }
+
+/* PLANES */
+
+.planes{
+    min-height:100vh;
+    background:#eef5e5;
+    padding:80px 20px;
+    text-align:center;
+}
+
+/* TITULO */
+
+.planes h2{
+    font-size:42px;
+    margin-bottom:50px;
+    color:#2e7d32;
+}
+
+/* CONTENEDOR */
+
+.planes-container{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    flex-wrap:wrap;
+}
+
+/* CARD */
+
+.plan-card{
+    background:white;
+    width:340px;
+    padding:35px 30px;
+    border-radius:25px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+    text-align:left;
+    transition:0.3s;
+}
+
+/* HOVER */
+
+.plan-card:hover{
+    transform:translateY(-10px);
+}
+
+/* ICONO */
+
+.plan-icon{
+    font-size:42px;
+    margin-bottom:20px;
+}
+
+/* TITULO */
+
+.plan-card h3{
+    font-size:24px;
+    margin-bottom:15px;
+    color:#2e7d32;
+}
+
+/* TEXTO */
+
+.plan-card p{
+    color:#555;
+    line-height:1.7;
+    margin-bottom:20px;
+}
+
+/* LISTA */
+
+.plan-card ul{
+    padding-left:20px;
+}
+
+/* ITEMS */
+
+.plan-card li{
+    margin-bottom:10px;
+    color:#444;
+    line-height:1.5;
+}
