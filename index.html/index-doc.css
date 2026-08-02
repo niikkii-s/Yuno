@@ -62,9 +62,15 @@ html{
     z-index:2;
 }
 
-.logo-text{
-    width:110px;
-    font-family: "Pacifico";
+.logo-text a{
+    font-family:"Pacifico", cursive;
+    color:white;
+    text-decoration:none;
+    transition:.3s;
+}
+
+.logo-text a:hover{
+    color:#b5e6fa;
 }
 
 .navbar{

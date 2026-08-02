@@ -1,0 +1,205 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#f4f8fb;
+}
+
+/* CONTENEDOR */
+
+.container{
+    display:flex;
+    height:100vh;
+}
+
+/* ================= SIDEBAR ================= */
+
+.sidebar{
+    width:300px;
+    background:#03a9f4;
+    color:white;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    padding:35px 30px;
+}
+
+/* LOGO */
+
+.logo a{
+    font-family:"Pacifico", cursive;
+    font-size:40px;
+    color:white;
+    text-decoration:none;
+    display:inline-block;
+    transition:.3s;
+}
+
+.logo a:hover{
+    color:#b5e6fa;
+}
+
+/* MENÚ */
+
+.sidebar ul{
+    list-style:none;
+    margin-top:20px;
+}
+
+.sidebar li{
+    margin-bottom:18px;
+}
+
+.sidebar ul li a{
+    display:block;
+    background:#0288d1;
+    color:white;
+    text-decoration:none;
+    font-size:20px;
+    padding:18px 20px;
+    border-radius:15px;
+    transition:.3s;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li a.activo{
+    background:#01579b;
+}
+
+/* CERRAR SESIÓN */
+
+.logout{
+    color:white;
+    text-decoration:none;
+    font-size:18px;
+    transition:.3s;
+}
+
+.logout:hover{
+    color:#dff6ff;
+}
+
+/* ================= CONTENIDO ================= */
+
+.contenido{
+    flex:1;
+    background:#eef7fc;
+    padding:40px;
+    overflow-y:auto;
+}
+
+/* CABECERA */
+
+.cabecera{
+    margin-bottom:40px;
+}
+
+.cabecera h2{
+    color:#01579b;
+    font-size:36px;
+    margin-bottom:10px;
+}
+
+.cabecera p{
+    color:#666;
+    font-size:18px;
+}
+
+/* ================= GRID ================= */
+
+.pacientes-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+    gap:30px;
+}
+
+/* CARD */
+
+.card-paciente{
+    background:white;
+    padding:30px;
+    border-radius:18px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);
+    transition:.3s;
+    text-align:center;
+}
+
+.card-paciente:hover{
+    transform:translateY(-6px);
+}
+
+/* ICONO */
+
+.icon{
+    font-size:55px;
+    margin-bottom:20px;
+}
+
+/* TÍTULO */
+
+.card-paciente h3{
+    color:#01579b;
+    font-size:24px;
+    margin-bottom:10px;
+}
+
+/* PLAN */
+
+.card-paciente p{
+    color:#666;
+    margin-bottom:18px;
+    font-size:17px;
+}
+
+/* ESTADOS */
+
+.estado{
+    display:inline-block;
+    padding:8px 18px;
+    border-radius:20px;
+    font-size:15px;
+    font-weight:bold;
+    margin-bottom:25px;
+}
+
+.activo{
+    background:#d8f5d2;
+    color:#2e7d32;
+}
+
+.inactivo{
+    background:#ffe0e0;
+    color:#c62828;
+}
+
+/* BOTÓN */
+
+.btn{
+    display:block;
+    background:#0288d1;
+    color:white;
+    text-decoration:none;
+    padding:14px;
+    border-radius:30px;
+    transition:.3s;
+    font-size:17px;
+}
+
+.btn:hover{
+    background:#01579b;
+}
+
+/* SCROLL */
+
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#b3e5fc;
+    border-radius:10px;
+}

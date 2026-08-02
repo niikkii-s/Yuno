@@ -25,39 +25,61 @@ body{
 /* SIDEBAR */
 
 .sidebar{
-    width:260px;
+    width:300px;
     background:#7cb342;
     color:white;
-    padding:40px 25px;
-    position:fixed;
-    height:100vh;
     display:flex;
     flex-direction:column;
     justify-content:space-between;
+    padding:35px 30px;
+    position:fixed;
+    height:100vh;
 }
 
 /* LOGO */
 
 .logo{
-    font-size:42px;
-    font-family: "Pacifico";
-    margin-top: -20px;
+    margin-top:-5px;
+}
+
+.logo a{
+    font-family:"Pacifico", cursive;
+    font-size:40px;
+    color:white;
+    text-decoration:none;
+    display:inline-block;
+    transition:.3s;
+}
+
+.logo a:hover{
+    color:#dcedc8;
 }
 
 /* MENU */
 
 .menu{
     list-style:none;
+    margin-top:20px;
 }
 
 .menu li{
-    margin-bottom:20px;
+    margin-bottom:18px;
 }
 
-.menu a{
+.menu li a{
+    display:block;
+    background:#689f38;
     color:white;
     text-decoration:none;
-    font-size:18px;
+    font-size:20px;
+    padding:18px 20px;
+    border-radius:15px;
+    transition:.3s;
+}
+
+.menu li a:hover,
+.menu li a.activo{
+    background:#558b2f;
 }
 
 /* LOGOUT */
@@ -65,13 +87,18 @@ body{
 .logout{
     color:white;
     text-decoration:none;
-    font-size:16px;
+    font-size:17px;
+    transition:.3s;
+}
+
+.logout:hover{
+    color:#e8f5e9;
 }
 
 /* CONTENIDO */
 
 .contenido{
-    margin-left:260px;
+    margin-left:300px;
     width:100%;
 }
 

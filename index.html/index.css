@@ -440,3 +440,14 @@ textarea{
     color:#444;
     line-height:1.5;
 }
+
+.logo-text a{
+    font-family:"Pacifico", cursive;
+    color:white;
+    text-decoration:none;
+    transition:0.3s;
+}
+
+.logo-text a:hover{
+    color:#dcedc8;
+}

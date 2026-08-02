@@ -14,27 +14,27 @@
     <h2>Crear cuenta</h2>
 
     <!-- INFORMACIÓN PERSONAL -->
-    <input type="text" placeholder="Nombre completo">
+    <input type="text" placeholder="Nombre completo" required>
 
-    <input type="email" placeholder="Correo">
+    <input type="email" placeholder="Correo" required>
 
-    <input type="date" placeholder="Fecha de nacimiento">
+    <input type="date" placeholder="Fecha de nacimiento" required>
 
-    <input type="password" placeholder="Contraseña">
+    <input type="password" placeholder="Contraseña" required>
 
-    <input type="password" placeholder="Confirmar contraseña">
+    <input type="password" placeholder="Confirmar contraseña" required>
 
     <!-- DATOS FÍSICOS -->
     <div class="fila">
 
-      <input type="number" placeholder="Peso (kg)">
+      <input type="number" placeholder="Peso (kg)" required>
 
-      <input type="number" placeholder="Altura (cm)">
+      <input type="number" placeholder="Altura (cm)" required>
 
     </div>
     
     <!-- RESTRICCIONES -->
-    <select>
+    <select required>
         <option disabled selected>Restricciones o dieta</option>
         <option>Vegetariano</option>
         <option>Vegano</option>
@@ -43,7 +43,7 @@
         <option>Ninguna</option>
     </select>
 
-    <button class="btn">Registrarse</button>
+    <button type="submit" class="btn">Registrarse</button>
 
     <a href="login.html">Volver a la página principal</a>
 
