@@ -3,25 +3,38 @@ const db = require("../config/db");
 const register = (req, res) => {
   console.log(req.body);
 
-  const { nombre, correo, contraseña } = req.body;
+  const {
+    nombre,
+    correo,
+    contraseña,
+    edad,
+    peso,
+    altura,
+    objetivo
+  } = req.body;
 
   const sql = `
-    INSERT INTO usuarios (nombre, correo, contraseña)
-    VALUES (?, ?, ?)
+    INSERT INTO usuarios
+    (nombre, correo, contraseña, edad, peso, altura, objetivo)
+    VALUES (?, ?, ?, ?, ?, ?, ?)
   `;
 
-  db.query(sql, [nombre, correo, contraseña], (err, result) => {
-    if (err) {
-      console.error(err);
-      return res.status(500).json({
-        mensaje: "Error al registrar el usuario"
+  db.query(
+    sql,
+    [nombre, correo, contraseña, edad, peso, altura, objetivo],
+    (err, result) => {
+      if (err) {
+        console.error(err);
+        return res.status(500).json({
+          mensaje: "Error al registrar el usuario"
+        });
+      }
+
+      res.status(201).json({
+        mensaje: "Usuario registrado correctamente"
       });
     }
-
-    res.status(201).json({
-      mensaje: "Usuario registrado correctamente"
-    });
-  });
+  );
 };
 
 const login = (req, res) => {
