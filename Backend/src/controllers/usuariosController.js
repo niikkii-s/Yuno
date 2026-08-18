@@ -2,7 +2,6 @@ const db = require("../config/db");
 
 // Obtener un usuario por ID
 const getUsuario = (req, res) => {
-
   const { id } = req.params;
 
   const sql = `
@@ -20,9 +19,9 @@ const getUsuario = (req, res) => {
   `;
 
   db.query(sql, [id], (err, results) => {
-
     if (err) {
       console.error(err);
+
       return res.status(500).json({
         mensaje: "Error al obtener el usuario"
       });
@@ -35,9 +34,7 @@ const getUsuario = (req, res) => {
     }
 
     res.json(results[0]);
-
   });
-
 };
 
 module.exports = {

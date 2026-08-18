@@ -12,12 +12,6 @@ const alimentosRoutes = require("./routes/alimentosRoutes");
 const registrosRoutes = require("./routes/registrosRoutes");
 const usuariosRoutes = require("./routes/usuariosRoutes");
 
-// Comprobar que las rutas se cargan
-console.log("authRoutes cargado");
-console.log("alimentosRoutes cargado");
-console.log("registrosRoutes cargado");
-console.log("usuariosRoutes cargado");
-
 // Registrar rutas
 app.use("/auth", authRoutes);
 app.use("/alimentos", alimentosRoutes);
