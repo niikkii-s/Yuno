@@ -2,9 +2,9 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Yuno</title>
+    <title>Yuno - Registro</title>
     <link rel="stylesheet" href="registro.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
@@ -14,40 +14,184 @@
     <h2>Crear cuenta</h2>
 
     <!-- INFORMACIÓN PERSONAL -->
-    <input type="text" placeholder="Nombre completo" required>
+    <input
+        type="text"
+        id="nombre"
+        name="nombre"
+        placeholder="Nombre completo"
+        required
+    >
 
-    <input type="email" placeholder="Correo" required>
+    <input
+        type="email"
+        id="correo"
+        name="correo"
+        placeholder="Correo"
+        required
+    >
 
-    <input type="date" placeholder="Fecha de nacimiento" required>
+    <!-- EDAD -->
+    <input
+        type="number"
+        id="edad"
+        name="edad"
+        placeholder="Edad"
+        min="1"
+        max="120"
+        required
+    >
 
-    <input type="password" placeholder="Contraseña" required>
+    <input
+        type="password"
+        id="contraseña"
+        name="contraseña"
+        placeholder="Contraseña"
+        required
+    >
 
-    <input type="password" placeholder="Confirmar contraseña" required>
+    <input
+        type="password"
+        id="confirmarContraseña"
+        name="confirmarContraseña"
+        placeholder="Confirmar contraseña"
+        required
+    >
 
     <!-- DATOS FÍSICOS -->
     <div class="fila">
 
-      <input type="number" placeholder="Peso (kg)" required>
+        <input
+            type="number"
+            id="peso"
+            name="peso"
+            placeholder="Peso (kg)"
+            min="1"
+            required
+        >
 
-      <input type="number" placeholder="Altura (cm)" required>
+        <input
+            type="number"
+            id="altura"
+            name="altura"
+            placeholder="Altura (cm)"
+            min="1"
+            required
+        >
 
     </div>
-    
-    <!-- RESTRICCIONES -->
-    <select required>
-        <option disabled selected>Restricciones o dieta</option>
-        <option>Vegetariano</option>
-        <option>Vegano</option>
-        <option>Sin gluten</option>
-        <option>Intolerante a la lactosa</option>
-        <option>Ninguna</option>
+
+    <!-- OBJETIVO / DIETA -->
+    <select id="objetivo" name="objetivo" required>
+        <option value="" disabled selected>
+            Restricciones o dieta
+        </option>
+
+        <option value="Vegetariano">Vegetariano</option>
+        <option value="Vegano">Vegano</option>
+        <option value="Sin gluten">Sin gluten</option>
+        <option value="Intolerante a la lactosa">
+            Intolerante a la lactosa
+        </option>
+        <option value="Ninguna">Ninguna</option>
     </select>
 
-    <button type="submit" class="btn">Registrarse</button>
+    <button type="button" class="btn" id="btnRegistrar">
+        Registrarse
+    </button>
+
+    <p id="mensaje"></p>
 
     <a href="login.html">Volver a la página principal</a>
 
 </div>
 
+<script>
+
+    const boton = document.getElementById("btnRegistrar");
+    const mensaje = document.getElementById("mensaje");
+
+    boton.addEventListener("click", async () => {
+
+        // Obtener los datos del formulario
+        const nombre = document.getElementById("nombre").value.trim();
+        const correo = document.getElementById("correo").value.trim();
+        const edad = document.getElementById("edad").value;
+        const contraseña = document.getElementById("contraseña").value;
+        const confirmarContraseña =
+            document.getElementById("confirmarContraseña").value;
+        const peso = document.getElementById("peso").value;
+        const altura = document.getElementById("altura").value;
+        const objetivo = document.getElementById("objetivo").value;
+
+        // Comprobar que las contraseñas coincidan
+        if (contraseña !== confirmarContraseña) {
+            mensaje.textContent = "Las contraseñas no coinciden.";
+            return;
+        }
+
+        // Datos que se enviarán al backend
+        const datosUsuario = {
+            nombre,
+            correo,
+            contraseña,
+            edad: Number(edad),
+            peso: Number(peso),
+            altura: Number(altura),
+            objetivo
+        };
+
+        try {
+
+            const respuesta = await fetch(
+                "http://localhost:3000/auth/register",
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+
+                    body: JSON.stringify(datosUsuario)
+                }
+            );
+
+            const datos = await respuesta.json();
+
+            if (respuesta.ok) {
+
+                mensaje.textContent =
+                    datos.mensaje || "Usuario registrado correctamente.";
+
+                // Limpiar formulario
+                document.getElementById("nombre").value = "";
+                document.getElementById("correo").value = "";
+                document.getElementById("edad").value = "";
+                document.getElementById("contraseña").value = "";
+                document.getElementById("confirmarContraseña").value = "";
+                document.getElementById("peso").value = "";
+                document.getElementById("altura").value = "";
+                document.getElementById("objetivo").value = "";
+
+            } else {
+
+                mensaje.textContent =
+                    datos.mensaje || "No se pudo registrar el usuario.";
+
+            }
+
+        } catch (error) {
+
+            console.error("Error:", error);
+
+            mensaje.textContent =
+                "No se pudo conectar con el servidor.";
+
+        }
+
+    });
+
+</script>
+
 </body>
 </html>
+```
