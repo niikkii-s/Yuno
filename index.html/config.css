@@ -1,0 +1,462 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: #f4f8f1;
+}
+
+
+/* =========================================
+   CONTENEDOR
+========================================= */
+
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+
+/* =========================================
+   SIDEBAR
+========================================= */
+
+.sidebar {
+    width: 300px;
+    background: #7cb342;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 35px 30px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+}
+
+
+/* =========================================
+   LOGO
+========================================= */
+
+.logo a {
+    font-family: "Pacifico", cursive;
+    font-size: 40px;
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    transition: 0.3s;
+}
+
+.logo a:hover {
+    color: #dcedc8;
+}
+
+
+/* =========================================
+   MENU
+========================================= */
+
+.sidebar ul {
+    list-style: none;
+    margin-top: 35px;
+}
+
+.sidebar li {
+    margin-bottom: 18px;
+}
+
+.sidebar ul li a {
+    display: block;
+    background: #689f38;
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 16px 20px;
+    border-radius: 15px;
+    transition: 0.3s;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li a.activo {
+    background: #558b2f;
+}
+
+
+/* =========================================
+   CONFIGURACIÓN ABAJO
+========================================= */
+
+.configuracion {
+    display: block;
+    margin-top: auto;
+    color: white;
+    background: #689f38;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 16px 20px;
+    border-radius: 15px;
+    transition: 0.3s;
+}
+
+.configuracion:hover,
+.configuracion.activo {
+    background: #558b2f;
+}
+
+
+/* =========================================
+   CONTENIDO
+========================================= */
+
+.contenido {
+    flex: 1;
+    margin-left: 300px;
+    background: #f4f8f1;
+    padding: 40px;
+    min-height: 100vh;
+    overflow-y: auto;
+}
+
+
+/* =========================================
+   CABECERA
+========================================= */
+
+.cabecera {
+    margin-bottom: 35px;
+}
+
+.cabecera h2 {
+    color: #558b2f;
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.cabecera p {
+    color: #666;
+    font-size: 18px;
+}
+
+
+/* =========================================
+   GRID
+========================================= */
+
+.configuracion-grid {
+    display: grid;
+    grid-template-columns:
+        repeat(2, minmax(350px, 1fr));
+    gap: 30px;
+    max-width: 1100px;
+}
+
+
+/* =========================================
+   TARJETAS
+========================================= */
+
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 18px;
+    box-shadow:
+        0 3px 10px rgba(0, 0, 0, 0.05);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+}
+
+
+/* =========================================
+   ICONOS
+========================================= */
+
+.icon {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+
+/* =========================================
+   TITULOS
+========================================= */
+
+.card h3 {
+    color: #558b2f;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+
+/* =========================================
+   DESCRIPCIONES
+========================================= */
+
+.descripcion {
+    color: #666;
+    line-height: 1.5;
+    margin-bottom: 25px;
+}
+
+
+/* =========================================
+   DATOS
+========================================= */
+
+.dato {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.dato span {
+    color: #666;
+    font-size: 15px;
+}
+
+.dato strong {
+    color: #558b2f;
+    font-size: 15px;
+    text-align: right;
+}
+
+
+/* =========================================
+   BOTONES
+========================================= */
+
+.btn {
+    display: block;
+    width: 100%;
+    margin-top: 25px;
+    padding: 13px;
+    border: none;
+    border-radius: 25px;
+    background: #7cb342;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #689f38;
+}
+
+
+/* =========================================
+   CAMPOS
+========================================= */
+
+.campo {
+    margin-bottom: 16px;
+}
+
+.campo label {
+    display: block;
+    color: #555;
+    font-size: 15px;
+    margin-bottom: 7px;
+}
+
+.campo input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    outline: none;
+    font-size: 15px;
+}
+
+.campo input:focus {
+    border-color: #7cb342;
+}
+
+
+/* =========================================
+   PREFERENCIAS
+========================================= */
+
+.preferencia {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 16px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.preferencia div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.preferencia strong {
+    color: #444;
+    font-size: 16px;
+}
+
+.preferencia span {
+    color: #777;
+    font-size: 14px;
+}
+
+.preferencia select {
+    padding: 9px 12px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background: white;
+    color: #555;
+    outline: none;
+    cursor: pointer;
+}
+
+
+/* =========================================
+   CUENTA
+========================================= */
+
+.cuenta {
+    border-top: 4px solid #7cb342;
+}
+
+
+/* =========================================
+   CERRAR SESIÓN
+========================================= */
+
+.cerrar {
+    background: #689f38;
+}
+
+.cerrar:hover {
+    background: #558b2f;
+}
+
+
+/* =========================================
+   DESACTIVAR CUENTA
+========================================= */
+
+.desactivar {
+    background: white;
+    color: #d32f2f;
+    border: 1px solid #d32f2f;
+}
+
+.desactivar:hover {
+    background: #ffebee;
+    color: #c62828;
+}
+
+
+/* =========================================
+   MOSTRAR CONTRASEÑA
+========================================= */
+
+.contrasena-contenedor {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-mostrar {
+    background: none;
+    border: none;
+    color: #7cb342;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0;
+}
+
+.btn-mostrar:hover {
+    color: #558b2f;
+}
+
+
+/* =========================================
+   ¿OLVIDASTE TU CONTRASEÑA?
+========================================= */
+
+.olvidaste {
+    display: block;
+    margin-top: 18px;
+    text-align: center;
+    color: #558b2f;
+    font-size: 14px;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.olvidaste:hover {
+    color: #7cb342;
+}
+
+
+/* =========================================
+   SCROLLBAR
+========================================= */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #c5dcae;
+    border-radius: 10px;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 900px) {
+
+    .sidebar {
+        width: 240px;
+    }
+
+    .contenido {
+        margin-left: 240px;
+        padding: 30px;
+    }
+
+    .configuracion-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .sidebar {
+        width: 100%;
+        position: relative;
+        min-height: auto;
+    }
+
+    .container {
+        display: block;
+    }
+
+    .contenido {
+        margin-left: 0;
+    }
+
+}

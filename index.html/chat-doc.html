@@ -1,105 +1,159 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chat | Yuno-Doc</title>
+    <meta charset="UTF-8">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <title>Chat | Yuno-Doc</title>
 
-<link rel="stylesheet" href="chat-doc.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
 
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="chat-doc.css"
+    >
 </head>
+
 <body>
 
 <div class="container">
 
-    <!-- SIDEBAR -->
+    <!-- ================= SIDEBAR ================= -->
 
     <aside class="sidebar">
 
         <h1 class="logo">
-            <a href="index-doc.html">Yuno</a>
+            <a href="index-doc.html">
+                Yuno
+            </a>
         </h1>
 
         <nav>
-
             <ul>
 
-                <li><a href="perfil-doc.html">Mi perfil</a></li>
+                <li>
+                    <a href="perfil-doc.html">
+                        Mi perfil
+                    </a>
+                </li>
 
-                <li><a href="chat-doc.html" class="activo">
-                    Chat
-                </a></li>
+                <li>
+                    <a
+                        href="chat-doc.html"
+                        class="activo"
+                    >
+                        Chat
+                    </a>
+                </li>
 
-                <li><a href="pacientes.html">Pacientes</a></li>
+                <li>
+                    <a href="pacientes.html">
+                        Pacientes
+                    </a>
+                </li>
 
             </ul>
-
         </nav>
 
-        <a href="login-doc.html" class="logout">
-            Cerrar sesión
+        <a
+            href="config-doc.html"
+            class="configuracion"
+        >
+            Configuración
         </a>
 
     </aside>
 
-    <!-- CHAT -->
+
+    <!-- ================= CHAT ================= -->
 
     <main class="chat">
 
-        <!-- LISTA PACIENTES -->
+        <!-- ================= LISTA PACIENTES ================= -->
 
         <section class="pacientes">
 
-            <h2>Pacientes</h2>
+            <h2>
+                Pacientes
+            </h2>
 
-            <div class="paciente seleccionado">
+            <div
+                class="paciente seleccionado"
+                data-paciente="Cliente 1"
+            >
                 👤 Cliente 1
             </div>
 
-            <div class="paciente">
+            <div
+                class="paciente"
+                data-paciente="Cliente 2"
+            >
                 👤 Cliente 2
             </div>
 
-            <div class="paciente">
+            <div
+                class="paciente"
+                data-paciente="Cliente 3"
+            >
                 👤 Cliente 3
             </div>
 
-            <div class="paciente">
+            <div
+                class="paciente"
+                data-paciente="Cliente 4"
+            >
                 👤 Cliente 4
             </div>
 
-            <div class="paciente">
+            <div
+                class="paciente"
+                data-paciente="Cliente 5"
+            >
                 👤 Cliente 5
             </div>
 
         </section>
 
-        <!-- CONVERSACIÓN -->
+
+        <!-- ================= CONVERSACIÓN ================= -->
 
         <section class="conversacion">
+
+            <!-- CABECERA -->
 
             <div class="cabecera-chat">
 
                 <div>
-
-                    <h2>Cliente 1</h2>
-
+                    <h2 id="nombrePaciente">
+                        Cliente 1
+                    </h2>
                 </div>
 
             </div>
 
+
             <!-- MENSAJES -->
 
             <div class="mensajes">
-
-                <!-- Aquí aparecerán los mensajes -->
-
+                <!-- Los mensajes se agregan con JavaScript -->
             </div>
+
 
             <!-- ESCRIBIR -->
 
@@ -107,9 +161,15 @@
 
                 <input
                     type="text"
-                    placeholder="Escribe un mensaje...">
+                    id="mensajeInput"
+                    placeholder="Escribe un mensaje..."
+                    autocomplete="off"
+                >
 
-                <button>
+                <button
+                    id="btnEnviar"
+                    type="button"
+                >
                     Enviar
                 </button>
 
@@ -121,5 +181,390 @@
 
 </div>
 
+
+<script>
+
+    // ==========================================
+    // ELEMENTOS DEL CHAT
+    // ==========================================
+
+    const pacientes =
+        document.querySelectorAll(".paciente");
+
+    const nombrePaciente =
+        document.getElementById("nombrePaciente");
+
+    const mensajes =
+        document.querySelector(".mensajes");
+
+    const mensajeInput =
+        document.getElementById("mensajeInput");
+
+    const btnEnviar =
+        document.getElementById("btnEnviar");
+
+
+    // ==========================================
+    // CONVERSACIONES
+    // ==========================================
+
+    const conversaciones = {
+
+        "Cliente 1": [
+            {
+                tipo: "paciente",
+                texto: "Hola, tengo una duda sobre mi plan alimenticio.",
+                hora: "6:20 PM"
+            },
+            {
+                tipo: "nutricionista",
+                texto: "¡Hola! Claro, cuéntame qué duda tienes.",
+                hora: "6:22 PM"
+            }
+        ],
+
+        "Cliente 2": [
+            {
+                tipo: "paciente",
+                texto: "¿Puedo cambiar algunos alimentos de mi plan?",
+                hora: "5:45 PM"
+            },
+            {
+                tipo: "nutricionista",
+                texto: "Sí, podemos buscar alternativas que se adapten mejor a ti.",
+                hora: "5:48 PM"
+            }
+        ],
+
+        "Cliente 3": [
+            {
+                tipo: "paciente",
+                texto: "He estado siguiendo el plan esta semana.",
+                hora: "4:30 PM"
+            }
+        ],
+
+        "Cliente 4": [
+            {
+                tipo: "paciente",
+                texto: "¿Cuándo podemos revisar mi progreso?",
+                hora: "3:15 PM"
+            }
+        ],
+
+        "Cliente 5": [
+            {
+                tipo: "paciente",
+                texto: "Hola, quería comentarte cómo me he sentido con el plan.",
+                hora: "2:50 PM"
+            }
+        ]
+
+    };
+
+
+    // ==========================================
+    // MOSTRAR CONVERSACIÓN
+    // ==========================================
+
+    function mostrarConversacion(nombre) {
+
+        mensajes.innerHTML = "";
+
+        const conversacion =
+            conversaciones[nombre] || [];
+
+        conversacion.forEach((mensaje) => {
+
+            agregarMensaje(
+                mensaje.texto,
+                mensaje.tipo,
+                mensaje.hora
+            );
+
+        });
+
+        mensajes.scrollTop =
+            mensajes.scrollHeight;
+    }
+
+
+    // ==========================================
+    // AGREGAR MENSAJE
+    // ==========================================
+
+    function agregarMensaje(texto, tipo, hora) {
+
+        const mensaje =
+            document.createElement("div");
+
+        mensaje.classList.add(
+            "mensaje",
+            tipo
+        );
+
+
+        // Texto del mensaje
+
+        const contenido =
+            document.createElement("span");
+
+        contenido.textContent =
+            texto;
+
+
+        // Hora del mensaje
+
+        const horaMensaje =
+            document.createElement("small");
+
+        horaMensaje.textContent =
+            hora;
+
+
+        // Agregar texto y hora
+
+        mensaje.appendChild(
+            contenido
+        );
+
+        mensaje.appendChild(
+            horaMensaje
+        );
+
+
+        // Mostrar mensaje
+
+        mensajes.appendChild(
+            mensaje
+        );
+    }
+
+
+    // ==========================================
+    // SELECCIONAR PACIENTE
+    // ==========================================
+
+    pacientes.forEach((paciente) => {
+
+        paciente.addEventListener("click", () => {
+
+            // Quitar selección anterior
+
+            pacientes.forEach((p) => {
+
+                p.classList.remove(
+                    "seleccionado"
+                );
+
+            });
+
+
+            // Seleccionar paciente
+
+            paciente.classList.add(
+                "seleccionado"
+            );
+
+
+            // Obtener nombre del paciente
+
+            const nombre =
+                paciente.dataset.paciente;
+
+
+            // Cambiar nombre de conversación
+
+            nombrePaciente.textContent =
+                nombre;
+
+
+            // Mostrar conversación
+
+            mostrarConversacion(
+                nombre
+            );
+
+
+            // Limpiar input
+
+            mensajeInput.value = "";
+
+
+            // Enfocar input
+
+            mensajeInput.focus();
+
+        });
+
+    });
+
+
+    // ==========================================
+    // ENVIAR MENSAJE
+    // ==========================================
+
+    function enviarMensaje() {
+
+        const texto =
+            mensajeInput.value.trim();
+
+
+        // No permitir mensajes vacíos
+
+        if (texto === "") {
+            return;
+        }
+
+
+        // Obtener paciente seleccionado
+
+        const pacienteSeleccionado =
+            document.querySelector(
+                ".paciente.seleccionado"
+            );
+
+
+        // Obtener nombre
+
+        const nombre =
+            pacienteSeleccionado.dataset.paciente;
+
+
+        // Crear conversación si no existe
+
+        if (!conversaciones[nombre]) {
+
+            conversaciones[nombre] = [];
+
+        }
+
+
+        // ==========================================
+        // OBTENER HORA ACTUAL
+        // ==========================================
+
+        const ahora =
+            new Date();
+
+        let horas =
+            ahora.getHours();
+
+        const minutos =
+            ahora
+                .getMinutes()
+                .toString()
+                .padStart(2, "0");
+
+
+        // AM o PM
+
+        const periodo =
+            horas >= 12 ? "PM" : "AM";
+
+
+        // Convertir a formato 12 horas
+
+        horas =
+            horas % 12;
+
+        if (horas === 0) {
+            horas = 12;
+        }
+
+
+        // Crear hora completa
+
+        const horaActual =
+            `${horas}:${minutos} ${periodo}`;
+
+
+        // ==========================================
+        // GUARDAR MENSAJE
+        // ==========================================
+
+        conversaciones[nombre].push({
+
+            tipo: "nutricionista",
+
+            texto: texto,
+
+            hora: horaActual
+
+        });
+
+
+        // ==========================================
+        // MOSTRAR MENSAJE
+        // ==========================================
+
+        agregarMensaje(
+            texto,
+            "nutricionista",
+            horaActual
+        );
+
+
+        // ==========================================
+        // LIMPIAR INPUT
+        // ==========================================
+
+        mensajeInput.value = "";
+
+
+        // Bajar al último mensaje
+
+        mensajes.scrollTop =
+            mensajes.scrollHeight;
+
+
+        // Volver a enfocar
+
+        mensajeInput.focus();
+
+    }
+
+
+    // ==========================================
+    // BOTÓN ENVIAR
+    // ==========================================
+
+    btnEnviar.addEventListener(
+        "click",
+        enviarMensaje
+    );
+
+
+    // ==========================================
+    // ENVIAR CON ENTER
+    // ==========================================
+
+    mensajeInput.addEventListener(
+        "keydown",
+        (evento) => {
+
+            if (evento.key === "Enter") {
+
+                evento.preventDefault();
+
+                enviarMensaje();
+
+            }
+
+        }
+    );
+
+
+    // ==========================================
+    // MOSTRAR CLIENTE 1 AL INICIAR
+    // ==========================================
+
+    mostrarConversacion(
+        "Cliente 1"
+    );
+
+</script>
+
 </body>
+
 </html>

@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Yuno</title>
-<link rel="stylesheet" href="login.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Yuno</title>
+
+    <link rel="stylesheet" href="login.css">
 </head>
 
 <body>
@@ -12,33 +15,329 @@
 <div class="container">
 
     <!-- IZQUIERDA -->
+
     <div class="left"></div>
 
+
     <!-- DERECHA -->
+
     <div class="right">
 
-        <img src="media/yuno2c.png" class="logo" alt="logo">
+        <!-- LOGO -->
+
+        <img
+            src="media/yuno2c.png"
+            class="logo"
+            alt="Logo de Yuno"
+        >
+
+
+        <!-- SUBTÍTULO -->
 
         <p class="subtitle">
             Nutrición inteligente para una vida sin límites
         </p>
 
+
+        <!-- FORMULARIO -->
+
         <form class="formulario">
 
-            <input type="text" placeholder="Usuario o correo" required>
-            <input type="password" placeholder="Contraseña" required>
+            <!-- USUARIO -->
 
-            <a href="#" class="forgot">¿Olvidaste tu contraseña?</a>
+            <input
+                type="text"
+                id="usuario"
+                placeholder="Correo electrónico"
+                required
+            >
 
-            <button type="submit" class="btn">Acceder</button>
+
+            <!-- CONTRASEÑA -->
+
+            <div class="password-container">
+
+            <input
+              type="password"
+              id="contraseña"
+              placeholder="Contraseña"
+              required
+            >
+
+            <button
+              type="button"
+            id="mostrarContraseña"
+              > 
+               Mostrar
+            </button>
+
+</div>
+
+
+            <!-- OLVIDASTE CONTRASEÑA -->
+
+            <a href="recuperar.html" class="forgot">
+                ¿Olvidaste tu contraseña?
+            </a>
+
+
+            <!-- BOTÓN ACCEDER -->
+
+            <button
+                type="submit"
+                class="btn"
+                id="btnAcceder"
+            >
+                Acceder
+            </button>
+
+
+            <!-- MENSAJE -->
+
+            <p id="mensaje"></p>
 
         </form>
 
-        <a href="registro.html" class="registro">Registrate</a>
+
+        <!-- REGISTRO -->
+
+        <a
+            href="registro.html"
+            class="registro"
+        >
+            Registrate
+        </a>
 
     </div>
 
 </div>
 
+
+<script>
+
+    // ==========================================
+    // ELEMENTOS
+    // ==========================================
+
+    const formulario = document.querySelector(".formulario");
+
+    const usuario = document.getElementById("usuario");
+
+    const contraseña = document.getElementById("contraseña");
+
+    const mostrarContraseña =
+        document.getElementById("mostrarContraseña");
+
+    const mensaje =
+        document.getElementById("mensaje");
+
+    const boton =
+        document.getElementById("btnAcceder");
+
+
+    // ==========================================
+    // MOSTRAR / OCULTAR CONTRASEÑA
+    // ==========================================
+
+    mostrarContraseña.addEventListener("click", () => {
+
+        if (contraseña.type === "password") {
+
+            contraseña.type = "text";
+
+            mostrarContraseña.textContent = "Ocultar";
+
+        } else {
+
+            contraseña.type = "password";
+
+            mostrarContraseña.textContent = "Mostrar";
+
+        }
+
+    });
+
+
+    // ==========================================
+    // INICIAR SESIÓN
+    // ==========================================
+
+    formulario.addEventListener("submit", async (evento) => {
+
+        evento.preventDefault();
+
+
+        // Obtener los datos
+
+        const usuarioValor =
+            usuario.value.trim();
+
+        const contraseñaValor =
+            contraseña.value;
+
+
+        // Limpiar mensaje anterior
+
+        mensaje.textContent = "";
+
+
+        // ==========================================
+        // VALIDAR USUARIO
+        // ==========================================
+
+        if (usuarioValor === "") {
+
+            mensaje.textContent =
+                "Por favor, introduce tu usuario o correo.";
+
+            return;
+
+        }
+
+
+        // ==========================================
+        // VALIDAR CONTRASEÑA
+        // ==========================================
+
+        if (contraseñaValor === "") {
+
+            mensaje.textContent =
+                "Por favor, introduce tu contraseña.";
+
+            return;
+
+        }
+
+
+        // ==========================================
+        // DESACTIVAR BOTÓN
+        // ==========================================
+
+        boton.disabled = true;
+
+        boton.textContent = "Accediendo...";
+
+
+        try {
+
+            // ==========================================
+            // ENVIAR DATOS AL BACKEND
+            // ==========================================
+
+            const respuesta = await fetch(
+                "http://172.29.80.73:3000/auth/login",
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+
+                    body: JSON.stringify({
+
+                        correo: usuarioValor,
+
+                        contraseña: contraseñaValor
+
+                    })
+                }
+            );
+
+
+            // ==========================================
+            // RECIBIR RESPUESTA
+            // ==========================================
+
+            const datos = await respuesta.json();
+
+
+            // ==========================================
+            // LOGIN CORRECTO
+            // ==========================================
+
+            if (respuesta.ok) {
+
+                mensaje.textContent =
+                    datos.mensaje ||
+                    "Inicio de sesión correcto.";
+
+
+                // Guardar usuario si el backend lo devuelve
+
+                if (datos.usuario) {
+
+                    localStorage.setItem(
+                        "usuario",
+                        JSON.stringify(datos.usuario)
+                    );
+
+                }
+
+
+                // Guardar token si el backend lo devuelve
+
+                if (datos.token) {
+
+                    localStorage.setItem(
+                        "token",
+                        datos.token
+                    );
+
+                }
+
+
+                // Ir al perfil
+
+                setTimeout(() => {
+
+                    window.location.href =
+                        "perfil.html";
+
+                }, 1000);
+
+            }
+
+
+            // ==========================================
+            // LOGIN INCORRECTO
+            // ==========================================
+
+            else {
+
+                mensaje.textContent =
+                    datos.mensaje ||
+                    "Usuario o contraseña incorrectos.";
+
+                boton.disabled = false;
+
+                boton.textContent = "Acceder";
+
+            }
+
+        }
+
+
+        // ==========================================
+        // ERROR DE CONEXIÓN
+        // ==========================================
+
+        catch (error) {
+
+            console.error("Error:", error);
+
+            mensaje.textContent =
+                "No se pudo conectar con el servidor.";
+
+            boton.disabled = false;
+
+            boton.textContent = "Acceder";
+
+        }
+
+    });
+
+</script>
+
 </body>
+
 </html>

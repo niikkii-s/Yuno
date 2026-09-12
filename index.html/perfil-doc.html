@@ -1,61 +1,75 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Perfil | Yuno-Doc</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <title>Perfil | Yuno-Doc</title>
 
-<link rel="stylesheet" href="perfil-doc.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="perfil-doc.css">
 
 </head>
+
 <body>
 
 <div class="container">
 
     <!-- SIDEBAR -->
 
-    <aside class="sidebar">
+<aside class="sidebar">
 
-        <h1 class="logo">
-            <a href="index-doc.html">Yuno</a>
-        </h1>
+    <h1 class="logo">
+        <a href="index-doc.html">Yuno</a>
+    </h1>
 
-        <nav>
+    <nav>
 
-            <ul>
+        <ul>
 
-                <li>
-                    <a href="perfil-doc.html" class="activo">
-                        Mi perfil
-                    </a>
-                </li>
+            <li>
+                <a href="perfil-doc.html" class="activo">
+                    Mi perfil
+                </a>
+            </li>
 
-                <li>
-                    <a href="chat-doc.html">
-                        Chat
-                    </a>
-                </li>
+            <li>
+                <a href="chat-doc.html">
+                    Chat
+                </a>
+            </li>
 
-                <li>
-                    <a href="pacientes.html">
-                        Pacientes
-                    </a>
-                </li>
+            <li>
+                <a href="pacientes.html">
+                    Pacientes
+                </a>
+            </li>
 
-            </ul>
+        </ul>
 
-        </nav>
+    </nav>
 
-        <a href="login-doc.html" class="logout">
-            Cerrar sesión
-        </a>
 
-    </aside>
+    <!-- CONFIGURACIÓN -->
+
+    <a
+        href="config-doc.html"
+        class="configuracion"
+    >
+        Configuración
+    </a>
+
+</aside>
+
 
     <!-- CONTENIDO -->
 
@@ -71,6 +85,7 @@
 
         </div>
 
+
         <div class="cards">
 
             <!-- INFORMACIÓN -->
@@ -81,29 +96,60 @@
                     👨‍⚕️
                 </div>
 
-                <h3>Información profesional</h3>
+                <h3>
+                    Información profesional
+                </h3>
+
 
                 <div class="dato">
-                    <span>Nombre</span>
-                    <strong></strong>
+
+                    <span>
+                        Nombre
+                    </span>
+
+                    <strong id="nombre">
+                    </strong>
+
                 </div>
 
-                <div class="dato">
-                    <span>Correo</span>
-                    <strong></strong>
-                </div>
 
                 <div class="dato">
-                    <span>Especialidad</span>
-                    <strong></strong>
+
+                    <span>
+                        Correo
+                    </span>
+
+                    <strong id="correo">
+                    </strong>
+
                 </div>
 
+
                 <div class="dato">
-                    <span>Registro profesional</span>
-                    <strong></strong>
+
+                    <span>
+                        Especialidad
+                    </span>
+
+                    <strong id="especialidad">
+                    </strong>
+
+                </div>
+
+
+                <div class="dato">
+
+                    <span>
+                        Registro profesional
+                    </span>
+
+                    <strong id="registroProfesional">
+                    </strong>
+
                 </div>
 
             </div>
+
 
             <!-- RESUMEN -->
 
@@ -113,26 +159,60 @@
                     📊
                 </div>
 
-                <h3>Resumen</h3>
+                <h3>
+                    Resumen
+                </h3>
+
 
                 <div class="dato">
-                    <span>Pacientes activos</span>
-                    <strong></strong>
+
+                    <span>
+                        Pacientes activos
+                    </span>
+
+                    <strong id="pacientesActivos">
+                        0
+                    </strong>
+
                 </div>
 
-                <div class="dato">
-                    <span>Consultas realizadas</span>
-                    <strong></strong>
-                </div>
 
                 <div class="dato">
-                    <span>Planes asignados</span>
-                    <strong></strong>
+
+                    <span>
+                        Consultas realizadas
+                    </span>
+
+                    <strong id="consultasRealizadas">
+                        0
+                    </strong>
+
                 </div>
 
+
                 <div class="dato">
-                    <span>Mensajes pendientes</span>
-                    <strong></strong>
+
+                    <span>
+                        Planes asignados
+                    </span>
+
+                    <strong id="planesAsignados">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="dato">
+
+                    <span>
+                        Mensajes pendientes
+                    </span>
+
+                    <strong id="mensajesPendientes">
+                        0
+                    </strong>
+
                 </div>
 
             </div>
@@ -143,5 +223,98 @@
 
 </div>
 
+
+<script>
+
+    // ==========================================
+    // OBTENER EL NUTRICIONISTA GUARDADO
+    // ==========================================
+
+    const usuario = JSON.parse(
+        localStorage.getItem("usuario")
+    );
+
+
+    // ==========================================
+    // INFORMACIÓN PROFESIONAL
+    // ==========================================
+
+    const nombreCompleto =
+        (usuario?.nombre || "") +
+        " " +
+        (usuario?.apellido || "");
+
+
+    document.getElementById("nombre").textContent =
+        nombreCompleto.trim() || "No disponible";
+
+
+    document.getElementById("correo").textContent =
+        usuario?.correo || "No disponible";
+
+
+    document.getElementById("especialidad").textContent =
+        usuario?.especialidad || "Nutricionista";
+
+
+    document.getElementById("registroProfesional").textContent =
+        usuario?.tarjetaProfesional ||
+        usuario?.registroProfesional ||
+        "No disponible";
+
+
+    // ==========================================
+    // RESUMEN
+    // ==========================================
+
+    document.getElementById("pacientesActivos").textContent =
+        usuario?.pacientesActivos || 0;
+
+
+    document.getElementById("consultasRealizadas").textContent =
+        usuario?.consultasRealizadas || 0;
+
+
+    document.getElementById("planesAsignados").textContent =
+        usuario?.planesAsignados || 0;
+
+
+    document.getElementById("mensajesPendientes").textContent =
+        usuario?.mensajesPendientes || 0;
+
+
+    // ==========================================
+    // CERRAR SESIÓN
+    // ==========================================
+
+    const botonCerrarSesion =
+        document.querySelector(".logout");
+
+
+    botonCerrarSesion.addEventListener("click", (evento) => {
+
+        evento.preventDefault();
+
+
+        const confirmar =
+            confirm("¿Estás seguro de que quieres cerrar sesión?");
+
+
+        if (!confirmar) {
+            return;
+        }
+
+
+        localStorage.removeItem("usuario");
+        localStorage.removeItem("token");
+
+
+        window.location.href = "login-doc.html";
+
+    });
+
+</script>
+
 </body>
+
 </html>

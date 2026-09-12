@@ -1,243 +1,472 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Perfil | Yuno</title>
-<link rel="stylesheet" href="perfil.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Perfil | Yuno</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="perfil.css">
 </head>
 
 <body>
 
-<div class="perfil-container">
+    <div class="container">
 
-    <!-- SIDEBAR -->
+        <!-- BARRA LATERAL -->
+        <aside class="sidebar">
 
-    <aside class="sidebar">
+            <h1 class="logo">
+                <a href="index.html">Yuno</a>
+            </h1>
 
-        <h1 class="logo">
-          <a href="index.html">Yuno</a>
-        </h1>   
+            <nav>
+                <ul>
 
-        <ul class="menu">
-            <li><a href="#perfil">Mi perfil</a></li>
-            <li><a href="#plan">Mi plan</a></li>
-            <li><a href="#seguimiento">Seguimiento</a></li>
-            <li><a href="#asesorias">Asesorías</a></li>
-        </ul>
+                    <li>
+                        <a href="#perfil" class="activo">
+                            Mi perfil
+                        </a>
+                    </li>
 
-        <a href="login.html" class="logout">Cerrar sesión</a>
+                    <li>
+                        <a href="#mi-plan">
+                            Mi plan
+                        </a>
+                    </li>
 
-    </aside>
+                    <li>
+                        <a href="#seguimiento">
+                            Seguimiento
+                        </a>
+                    </li>
 
-    <!-- CONTENIDO -->
+                    <li>
+                        <a href="#asesorias">
+                            Asesorías
+                        </a>
+                    </li>
 
-    <main class="contenido">
+                </ul>
+            </nav>
 
-        <!-- PERFIL -->
+            <!-- CONFIGURACIÓN -->
+            <a href="config.html" class="configuracion">
+                Configuración
+            </a>
 
-<!-- PERFIL -->
+        </aside>
 
-<section id="perfil" class="seccion">
 
-    <div class="header">
-        <h2>Mi perfil</h2>
-        <p>Gestiona tu información y tu progreso nutricional.</p>
-    </div>
+        <!-- CONTENIDO -->
+        <main class="contenido">
 
-    <div class="cards">
+            <!-- PERFIL -->
+            <div id="perfil" class="cabecera">
 
-        <!-- INFORMACIÓN GENERAL -->
+                <h2>Mi perfil</h2>
 
-        <div class="card perfil-card">
-
-            <div class="icon">👤</div>
-
-            <h3>Información general</h3>
-
-            <div class="info-grupo">
-
-                <h4>Información personal</h4>
-
-                <div class="dato">
-                    <span>Nombre:</span>
-                    <strong></strong>
-                </div>
-
-                <div class="dato">
-                    <span>Correo:</span>
-                    <strong></strong>
-                </div>
-
-                <div class="dato">
-                    <span>Fecha de nacimiento:</span>
-                    <strong></strong>
-                </div>
+                <p>
+                    Consulta tu información, objetivos, plan y progreso.
+                </p>
 
             </div>
 
-            <div class="info-grupo">
 
-                <h4>Datos físicos</h4>
-
-                <div class="dato">
-                    <span>Peso actual:</span>
-                    <strong></strong>
-                </div>
-
-                <div class="dato">
-                    <span>Altura:</span>
-                    <strong></strong>
-                </div>
-
-                <div class="dato">
-                    <span>IMC:</span>
-                    <strong></strong>
-                </div>
-
-            </div>
-
-        </div>
-
-        <!-- OBJETIVOS -->
-
-        <div class="card objetivo-card">
-
-            <div class="icon">🎯</div>
-
-            <h3>Objetivos</h3>
-
-            <div class="info-grupo">
-
-                <h4>Meta actual</h4>
-
-                <div class="dato">
-                    <span>Objetivo principal:</span>
-                    <strong></strong>
-                </div>
-
-                <div class="dato">
-                    <span>Peso meta:</span>
-                    <strong></strong>
-                </div>
-
-                <div class="dato">
-                    <span>Estado:</span>
-                    <strong></strong>
-                </div>
-
-            </div>
-
-            <div class="info-grupo">
-
-                <h4>Progreso</h4>
-
-                <div class="barra-progreso">
-                    <div class="progreso"></div>
-                </div>
-
-                <p class="porcentaje">0% completado</p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-        <!-- PLAN -->
-
-        <section id="plan" class="seccion">
-
-            <div class="header">
-                <h2>Mi plan</h2>
-                <p>Consulta tu plan nutricional personalizado.</p>
-            </div>
-
+            <!-- INFORMACIÓN GENERAL + OBJETIVOS -->
             <div class="cards">
 
-                <div class="card">
+                <!-- INFORMACIÓN GENERAL -->
+                <section class="card">
 
-                    <div class="icon">🥗</div>
+                    <div class="icon">
+                        👤
+                    </div>
 
-                    <h3>Plan saludable</h3>
+                    <h3>
+                        Información general
+                    </h3>
 
-                    <p>
-                        Accede a recomendaciones alimenticias,
-                        hábitos saludables y seguimiento constante.
+                    <div class="dato">
+                        <span>Nombre</span>
+                        <strong id="nombreUsuario">-</strong>
+                    </div>
+
+                    <div class="dato">
+                        <span>Correo</span>
+                        <strong id="correoUsuario">-</strong>
+                    </div>
+
+                    <div class="dato">
+                        <span>Peso actual</span>
+                        <strong id="pesoUsuario">-</strong>
+                    </div>
+
+                    <div class="dato">
+                        <span>Altura</span>
+                        <strong id="alturaUsuario">-</strong>
+                    </div>
+
+                    <div class="dato">
+                        <span>IMC</span>
+                        <strong id="imcUsuario">-</strong>
+                    </div>
+
+                </section>
+
+
+                <!-- MIS OBJETIVOS -->
+                <section class="card">
+
+                    <div class="icon">
+                        🎯
+                    </div>
+
+                    <h3>
+                        Mis objetivos
+                    </h3>
+
+                    <div class="dato">
+                        <span>Objetivo principal</span>
+                        <strong id="objetivoUsuario">-</strong>
+                    </div>
+
+                    <div class="dato">
+                        <span>Peso objetivo</span>
+                        <strong id="pesoObjetivo">-</strong>
+                    </div>
+
+                    <div class="dato">
+                        <span>Actividad física</span>
+                        <strong id="actividadUsuario">-</strong>
+                    </div>
+
+                    <div class="dato">
+                        <span>Alimentación</span>
+                        <strong id="alimentacionUsuario">-</strong>
+                    </div>
+
+                </section>
+
+            </div>
+
+
+            <!-- MI PLAN -->
+            <section id="mi-plan" class="seccion">
+
+                <div class="seccion-icon">
+                    🥗
+                </div>
+
+                <div class="seccion-contenido">
+
+                    <h3>
+                        Mi plan
+                    </h3>
+
+                    <p class="descripcion">
+                        Consulta el plan alimenticio que tienes actualmente
+                        y los objetivos que estás trabajando.
                     </p>
+
+                    <div class="plan-info">
+
+                        <div>
+                            <span>Plan actual</span>
+
+                            <strong id="planActual">
+                                Plan saludable básico
+                            </strong>
+                        </div>
+
+                        <div>
+                            <span>Objetivo</span>
+
+                            <strong id="objetivoPlan">
+                                Mejorar hábitos
+                            </strong>
+                        </div>
+
+                        <div>
+                            <span>Estado</span>
+
+                            <strong class="estado">
+                                Activo
+                            </strong>
+                        </div>
+
+                    </div>
 
                 </div>
 
-            </div>
+            </section>
 
-        </section>
 
-        <!-- SEGUIMIENTO -->
+            <!-- SEGUIMIENTO -->
+            <section id="seguimiento" class="seccion">
 
-        <section id="seguimiento" class="seccion">
+                <div class="seccion-icon">
+                    📊
+                </div>
 
-            <div class="header">
-                <h2>Seguimiento</h2>
-                <p>Revisa tu evolución y progreso.</p>
-            </div>
+                <div class="seccion-contenido">
 
-            <div class="cards">
+                    <h3>
+                        Seguimiento
+                    </h3>
 
-                <div class="card">
-
-                    <div class="icon">📊</div>
-
-                    <h3>Tu progreso</h3>
-
-                    <p>
-                        Lleva un control constante de tus resultados
-                        y mantén tus objetivos claros.
+                    <p class="descripcion">
+                        Revisa tu progreso y los cambios que has conseguido
+                        durante tu proceso.
                     </p>
+
+                    <div class="progreso">
+
+                        <div class="dato-progreso">
+
+                            <span>
+                                Peso inicial
+                            </span>
+
+                            <strong id="pesoInicial">
+                                -
+                            </strong>
+
+                        </div>
+
+                        <div class="dato-progreso">
+
+                            <span>
+                                Peso actual
+                            </span>
+
+                            <strong id="pesoSeguimiento">
+                                -
+                            </strong>
+
+                        </div>
+
+                        <div class="dato-progreso">
+
+                            <span>
+                                Progreso
+                            </span>
+
+                            <strong id="progresoUsuario">
+                                En seguimiento
+                            </strong>
+
+                        </div>
+
+                    </div>
 
                 </div>
 
-            </div>
+            </section>
 
-        </section>
 
-        <!-- ASESORIAS -->
+            <!-- ASESORÍAS -->
+            <section id="asesorias" class="seccion">
 
- <section id="asesorias" class="seccion">
+                <div class="seccion-icon">
+                    💬
+                </div>
 
-    <div class="header">
-        <h2>Asesorías</h2>
-        <p>
-            Mantén comunicación con tu nutricionista para resolver dudas,
-            recibir recomendaciones y obtener acompañamiento durante tu proceso.
-        </p>
+                <div class="seccion-contenido">
+
+                    <h3>
+                        Asesorías
+                    </h3>
+
+                    <p class="descripcion">
+                        Mantén contacto con tu nutricionista para resolver
+                        dudas y recibir orientación durante tu proceso.
+                    </p>
+
+                    <div class="asesoria-info">
+
+                        <div>
+
+                            <span>
+                                Próxima asesoría
+                            </span>
+
+                            <strong id="proximaAsesoria">
+                                Pendiente de programación
+                            </strong>
+
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Nutricionista
+                            </span>
+
+                            <strong id="nutricionista">
+                                Pendiente de asignación
+                            </strong>
+
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Consultas disponibles
+                            </span>
+
+                            <strong id="consultasDisponibles">
+                                -
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                    <a href="chat.html" class="btn">
+                        Ir al chat
+                    </a>
+
+                </div>
+
+            </section>
+
+        </main>
+
     </div>
 
-    <div class="asesorias-container">
 
-        <div class="asesorias-icono">💬</div>
+    <!-- JAVASCRIPT -->
+    <script>
 
-        <h3>Chat nutricional</h3>
+        const usuarioGuardado = localStorage.getItem("usuario");
 
-        <p>
-            Accede a un espacio de comunicación directa con tu nutricionista
-            para recibir orientación personalizada cuando lo necesites.
-        </p>
+        if (usuarioGuardado) {
 
-        <a href="chat.html" class="btn-chat">
-            Ir al chat
-        </a>
+            try {
 
-    </div>
+                const usuario = JSON.parse(usuarioGuardado);
 
-</section>
-    </main>
+                /* INFORMACIÓN GENERAL */
 
-</div>
+                document.getElementById("nombreUsuario").textContent =
+                    usuario.nombre || "-";
+
+                document.getElementById("correoUsuario").textContent =
+                    usuario.correo || "-";
+
+
+                /* PESO */
+
+                if (usuario.peso) {
+
+                    document.getElementById("pesoUsuario").textContent =
+                        usuario.peso + " kg";
+
+                    document.getElementById("pesoSeguimiento").textContent =
+                        usuario.peso + " kg";
+
+                    document.getElementById("pesoInicial").textContent =
+                        usuario.peso + " kg";
+                }
+
+
+                /* ALTURA + IMC */
+
+                if (usuario.altura) {
+
+                    document.getElementById("alturaUsuario").textContent =
+                        usuario.altura + " cm";
+
+                    if (usuario.peso) {
+
+                        const alturaMetros =
+                            Number(usuario.altura) / 100;
+
+                        const peso =
+                            Number(usuario.peso);
+
+                        if (
+                            alturaMetros > 0 &&
+                            peso > 0
+                        ) {
+
+                            const imc =
+                                peso /
+                                (alturaMetros * alturaMetros);
+
+                            document.getElementById("imcUsuario").textContent =
+                                imc.toFixed(1);
+                        }
+                    }
+                }
+
+
+                /* OBJETIVOS */
+
+                document.getElementById("objetivoUsuario").textContent =
+                    usuario.objetivo || "-";
+
+                document.getElementById("pesoObjetivo").textContent =
+                    usuario.pesoObjetivo
+                        ? usuario.pesoObjetivo + " kg"
+                        : "-";
+
+                document.getElementById("actividadUsuario").textContent =
+                    usuario.actividad || "-";
+
+                document.getElementById("alimentacionUsuario").textContent =
+                    usuario.alimentacion || "-";
+
+
+                /* PLAN */
+
+                document.getElementById("planActual").textContent =
+                    usuario.plan || "Plan saludable básico";
+
+                document.getElementById("objetivoPlan").textContent =
+                    usuario.objetivo || "Mejorar hábitos";
+
+            }
+
+            catch (error) {
+
+                console.log(
+                    "No se pudo cargar la información del usuario."
+                );
+
+            }
+
+        }
+
+
+        /* NAVEGACIÓN DEL MENÚ */
+
+        const enlacesMenu =
+            document.querySelectorAll(".sidebar ul li a");
+
+        enlacesMenu.forEach(enlace => {
+
+            enlace.addEventListener("click", function () {
+
+                enlacesMenu.forEach(item => {
+                    item.classList.remove("activo");
+                });
+
+                this.classList.add("activo");
+
+            });
+
+        });
+
+    </script>
 
 </body>
+
 </html>

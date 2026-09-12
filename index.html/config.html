@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Configuración | Yuno</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="config.css">
+
+</head>
+
+
+<body>
+
+    <div class="container">
+
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar">
+
+
+            <h1 class="logo">
+
+                <a href="index.html">
+                    Yuno
+                </a>
+
+            </h1>
+
+
+            <nav>
+
+                <ul>
+
+
+                    <!-- PERFIL -->
+
+                    <li>
+
+                        <a href="perfil.html#perfil">
+                            Mi perfil
+                        </a>
+
+                    </li>
+
+
+                    <!-- MI PLAN -->
+
+                    <li>
+
+                        <a href="perfil.html#mi-plan">
+                            Mi plan
+                        </a>
+
+                    </li>
+
+
+                    <!-- SEGUIMIENTO -->
+
+                    <li>
+
+                        <a href="perfil.html#seguimiento">
+                            Seguimiento
+                        </a>
+
+                    </li>
+
+
+                    <!-- ASESORÍAS -->
+
+                    <li>
+
+                        <a href="perfil.html#asesorias">
+                            Asesorías
+                        </a>
+
+                    </li>
+
+
+                </ul>
+
+            </nav>
+
+
+            <!-- CONFIGURACIÓN -->
+
+            <a
+                href="configuracion.html"
+                class="configuracion activo">
+
+                Configuración
+
+            </a>
+
+
+        </aside>
+
+
+
+        <!-- CONTENIDO -->
+
+        <main class="contenido">
+
+
+            <!-- CABECERA -->
+
+            <div class="cabecera">
+
+                <h2>
+                    Configuración
+                </h2>
+
+                <p>
+                    Consulta y administra la información de tu cuenta.
+                </p>
+
+            </div>
+
+
+
+            <!-- GRID -->
+
+            <div class="configuracion-grid">
+
+
+
+                <!-- INFORMACIÓN PERSONAL -->
+
+                <section class="card">
+
+
+                    <div class="icon">
+                        👤
+                    </div>
+
+
+                    <h3>
+                        Información personal
+                    </h3>
+
+
+                    <p class="descripcion">
+                        Consulta tu información personal.
+                    </p>
+
+
+
+                    <div class="dato">
+
+                        <span>
+                            Nombre completo
+                        </span>
+
+                        <strong id="nombreCompleto"></strong>
+
+                    </div>
+
+
+
+                    <div class="dato">
+
+                        <span>
+                            Correo
+                        </span>
+
+                        <strong id="correoUsuario"></strong>
+
+                    </div>
+
+
+
+                    <div class="dato">
+
+                        <span>
+                            Edad
+                        </span>
+
+                        <strong id="edadUsuario"></strong>
+
+                    </div>
+
+
+
+                    <div class="dato">
+
+                        <span>
+                            Contraseña
+                        </span>
+
+                        <strong class="contrasena-contenedor">
+
+                            <span id="contrasenaUsuario"></span>
+
+                            <button
+                                type="button"
+                                id="btnMostrarContrasena"
+                                class="btn-mostrar">
+
+                                Mostrar
+
+                            </button>
+
+                        </strong>
+
+                    </div>
+
+
+
+                    <div class="dato">
+
+                        <span>
+                            Peso
+                        </span>
+
+                        <strong id="pesoUsuario"></strong>
+
+                    </div>
+
+
+
+                    <div class="dato">
+
+                        <span>
+                            Estatura
+                        </span>
+
+                        <strong id="estaturaUsuario"></strong>
+
+                    </div>
+
+
+
+                    <div class="dato">
+
+                        <span>
+                            Restricciones o dietas
+                        </span>
+
+                        <strong id="restriccionesUsuario"></strong>
+
+                    </div>
+
+
+                </section>
+
+
+
+
+                <!-- SEGURIDAD -->
+
+                <section class="card">
+
+
+                    <div class="icon">
+                        🔒
+                    </div>
+
+
+                    <h3>
+                        Seguridad
+                    </h3>
+
+
+                    <p class="descripcion">
+                        Cambia tu contraseña para mantener segura tu cuenta.
+                    </p>
+
+
+
+                    <div class="campo">
+
+                        <label for="contrasenaActual">
+                            Contraseña actual
+                        </label>
+
+                        <input
+                            type="password"
+                            id="contrasenaActual"
+                            placeholder="Ingresa tu contraseña actual">
+
+                    </div>
+
+
+
+                    <div class="campo">
+
+                        <label for="nuevaContrasena">
+                            Nueva contraseña
+                        </label>
+
+                        <input
+                            type="password"
+                            id="nuevaContrasena"
+                            placeholder="Ingresa una nueva contraseña">
+
+                    </div>
+
+
+
+                    <div class="campo">
+
+                        <label for="confirmarContrasena">
+                            Confirmar nueva contraseña
+                        </label>
+
+                        <input
+                            type="password"
+                            id="confirmarContrasena"
+                            placeholder="Confirma tu nueva contraseña">
+
+                    </div>
+
+
+
+                    <button
+                        type="button"
+                        class="btn"
+                        id="btnCambiarContrasena">
+
+                        Cambiar contraseña
+
+                    </button>
+
+
+
+                    <a
+                        href="recuperar.html"
+                        class="olvidaste">
+
+                        ¿Olvidaste tu contraseña?
+
+                    </a>
+
+
+                </section>
+
+
+
+
+                <!-- PREFERENCIAS -->
+
+                <section class="card">
+
+
+                    <div class="icon">
+                        ⚙️
+                    </div>
+
+
+                    <h3>
+                        Preferencias
+                    </h3>
+
+
+                    <p class="descripcion">
+                        Personaliza algunas opciones de tu cuenta.
+                    </p>
+
+
+
+                    <div class="preferencia">
+
+                        <div>
+
+                            <strong>
+                                Unidad de peso
+                            </strong>
+
+                            <span>
+                                Selecciona cómo quieres ver tu peso.
+                            </span>
+
+                        </div>
+
+
+
+                        <select id="unidadPeso">
+
+                            <option value="kg">
+                                Kilogramos (kg)
+                            </option>
+
+                            <option value="lb">
+                                Libras (lb)
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <div class="preferencia">
+
+                        <div>
+
+                            <strong>
+                                Idioma
+                            </strong>
+
+                            <span>
+                                Selecciona el idioma de la aplicación.
+                            </span>
+
+                        </div>
+
+
+
+                        <select id="idioma">
+
+                            <option value="es">
+                                Español
+                            </option>
+
+                            <option value="en">
+                                English
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <button
+                        type="button"
+                        class="btn"
+                        id="btnGuardarPreferencias">
+
+                        Guardar preferencias
+
+                    </button>
+
+
+                </section>
+
+
+
+
+                <!-- CUENTA -->
+
+                <section class="card cuenta">
+
+
+                    <div class="icon">
+                        ⚠️
+                    </div>
+
+
+                    <h3>
+                        Cuenta
+                    </h3>
+
+
+                    <p class="descripcion">
+                        Administra las opciones relacionadas con tu cuenta.
+                    </p>
+
+
+
+                    <a
+                        href="login.html"
+                        class="btn cerrar">
+
+                        Cerrar sesión
+
+                    </a>
+
+
+
+                    <button
+                        type="button"
+                        class="btn desactivar">
+
+                        Desactivar cuenta
+
+                    </button>
+
+
+                </section>
+
+
+            </div>
+
+
+        </main>
+
+
+    </div>
+
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+
+        /* =========================================
+           DATOS DEL USUARIO
+        ========================================== */
+
+        const usuarioGuardado =
+            localStorage.getItem("usuario");
+
+
+        let usuario = {};
+
+
+        if (usuarioGuardado) {
+
+            try {
+
+                usuario =
+                    JSON.parse(usuarioGuardado);
+
+            } catch (error) {
+
+                usuario = {};
+
+            }
+
+        }
+
+
+
+        /* =========================================
+           MOSTRAR INFORMACIÓN PERSONAL
+        ========================================== */
+
+        document.getElementById(
+            "nombreCompleto"
+        ).textContent =
+            usuario.nombre || "";
+
+
+        document.getElementById(
+            "correoUsuario"
+        ).textContent =
+            usuario.correo || "";
+
+
+        document.getElementById(
+            "edadUsuario"
+        ).textContent =
+            usuario.edad || "";
+
+
+        document.getElementById(
+            "pesoUsuario"
+        ).textContent =
+            usuario.peso
+                ? usuario.peso + " kg"
+                : "";
+
+
+        document.getElementById(
+            "estaturaUsuario"
+        ).textContent =
+            usuario.estatura
+                ? usuario.estatura + " cm"
+                : "";
+
+
+        document.getElementById(
+            "restriccionesUsuario"
+        ).textContent =
+            usuario.restricciones || "";
+
+
+
+        /* =========================================
+           CONTRASEÑA
+        ========================================== */
+
+        const contrasenaElemento =
+            document.getElementById(
+                "contrasenaUsuario"
+            );
+
+
+        const btnMostrarContrasena =
+            document.getElementById(
+                "btnMostrarContrasena"
+            );
+
+
+        let contrasenaVisible = false;
+
+
+        function ocultarContrasena(contrasena) {
+
+            if (!contrasena) {
+                return "";
+            }
+
+
+            if (contrasena.length <= 2) {
+                return "••••";
+            }
+
+
+            const ultimosDos =
+                contrasena.slice(-2);
+
+
+            return "••••••" + ultimosDos;
+
+        }
+
+
+        const contrasena =
+            usuario.contrasena || "";
+
+
+        contrasenaElemento.textContent =
+            ocultarContrasena(contrasena);
+
+
+        btnMostrarContrasena.addEventListener(
+            "click",
+            function () {
+
+
+                if (!contrasena) {
+                    return;
+                }
+
+
+                if (contrasenaVisible) {
+
+                    contrasenaElemento.textContent =
+                        ocultarContrasena(contrasena);
+
+                    btnMostrarContrasena.textContent =
+                        "Mostrar";
+
+                    contrasenaVisible = false;
+
+                } else {
+
+                    contrasenaElemento.textContent =
+                        contrasena;
+
+                    btnMostrarContrasena.textContent =
+                        "Ocultar";
+
+                    contrasenaVisible = true;
+
+                }
+
+            }
+        );
+
+
+
+        /* =========================================
+           CAMBIAR CONTRASEÑA
+        ========================================== */
+
+        document.getElementById(
+            "btnCambiarContrasena"
+        ).addEventListener(
+            "click",
+            function () {
+
+
+                const actual =
+                    document.getElementById(
+                        "contrasenaActual"
+                    ).value.trim();
+
+
+                const nueva =
+                    document.getElementById(
+                        "nuevaContrasena"
+                    ).value.trim();
+
+
+                const confirmar =
+                    document.getElementById(
+                        "confirmarContrasena"
+                    ).value.trim();
+
+
+
+                if (
+                    actual === "" ||
+                    nueva === "" ||
+                    confirmar === ""
+                ) {
+
+                    alert(
+                        "Completa todos los campos de contraseña."
+                    );
+
+                    return;
+
+                }
+
+
+
+                if (nueva !== confirmar) {
+
+                    alert(
+                        "Las nuevas contraseñas no coinciden."
+                    );
+
+                    return;
+
+                }
+
+
+
+                alert(
+                    "La contraseña se ha cambiado correctamente."
+                );
+
+
+
+                document.getElementById(
+                    "contrasenaActual"
+                ).value = "";
+
+
+                document.getElementById(
+                    "nuevaContrasena"
+                ).value = "";
+
+
+                document.getElementById(
+                    "confirmarContrasena"
+                ).value = "";
+
+            }
+        );
+
+
+
+        /* =========================================
+           PREFERENCIAS
+        ========================================== */
+
+        const unidadGuardada =
+            localStorage.getItem("unidadPeso");
+
+
+        const idiomaGuardado =
+            localStorage.getItem("idioma");
+
+
+        if (unidadGuardada) {
+
+            document.getElementById(
+                "unidadPeso"
+            ).value =
+                unidadGuardada;
+
+        }
+
+
+        if (idiomaGuardado) {
+
+            document.getElementById(
+                "idioma"
+            ).value =
+                idiomaGuardado;
+
+        }
+
+
+
+        document.getElementById(
+            "btnGuardarPreferencias"
+        ).addEventListener(
+            "click",
+            function () {
+
+
+                const unidad =
+                    document.getElementById(
+                        "unidadPeso"
+                    ).value;
+
+
+                const idioma =
+                    document.getElementById(
+                        "idioma"
+                    ).value;
+
+
+
+                localStorage.setItem(
+                    "unidadPeso",
+                    unidad
+                );
+
+
+                localStorage.setItem(
+                    "idioma",
+                    idioma
+                );
+
+
+                alert(
+                    "Preferencias guardadas correctamente."
+                );
+
+            }
+        );
+
+
+
+        /* =========================================
+           DESACTIVAR CUENTA
+        ========================================== */
+
+        document.querySelector(
+            ".desactivar"
+        ).addEventListener(
+            "click",
+            function () {
+
+
+                const confirmar =
+                    confirm(
+                        "¿Estás seguro de que quieres desactivar tu cuenta?"
+                    );
+
+
+                if (confirmar) {
+
+                    alert(
+                        "Tu cuenta ha sido desactivada."
+                    );
+
+                }
+
+            }
+        );
+
+
+    </script>
+
+</body>
+
+</html>

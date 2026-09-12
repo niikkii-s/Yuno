@@ -1,73 +1,361 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Chat | Yuno</title>
 
 <link rel="stylesheet" href="chat.css">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
+
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 
 </head>
+
+
 <body>
+
 
 <div class="chat-container">
 
-    <!-- SIDEBAR -->
+
+    <!-- ==========================================
+         SIDEBAR
+    =========================================== -->
 
     <aside class="sidebar">
 
-        <h1 class="logo">Yuno</h1>
+        <h1 class="logo">
+            Yuno
+        </h1>
 
-        <a href="perfil.html" class="volver">
+
+        <a
+            href="perfil.html"
+            class="volver">
+
             ← Volver al perfil
+
         </a>
 
     </aside>
 
-    <!-- CHAT -->
+
+
+    <!-- ==========================================
+         CHAT
+    =========================================== -->
 
     <main class="chat">
+
+
+        <!-- HEADER -->
 
         <header class="chat-header">
 
             <div>
 
-                <h2>Asesoría nutricional</h2>
+                <h2>
+                    Asesoría nutricional
+                </h2>
+
+                <p>
+                    Comunicación con tu nutricionista
+                </p>
 
             </div>
 
         </header>
 
-        <!-- MENSAJES -->
 
-        <section class="mensajes">
+
+        <!-- ==========================================
+             MENSAJES
+        =========================================== -->
+
+        <section
+            class="mensajes"
+            id="mensajes">
 
             <!-- Los mensajes aparecerán aquí -->
 
         </section>
 
-        <!-- ESCRIBIR -->
+
+
+        <!-- ==========================================
+             ESCRIBIR
+        =========================================== -->
 
         <footer class="escribir">
 
+
             <input
                 type="text"
+                id="mensajeInput"
                 placeholder="Escribe un mensaje..."
+                autocomplete="off"
             >
 
-            <button>
+
+            <button
+                type="button"
+                id="btnEnviar">
+
                 Enviar
+
             </button>
+
 
         </footer>
 
+
     </main>
+
 
 </div>
 
+
+
+<!-- ==========================================
+     JAVASCRIPT
+========================================== -->
+
+<script>
+
+
+// ==========================================
+// OBTENER ELEMENTOS
+// ==========================================
+
+const inputMensaje =
+    document.getElementById("mensajeInput");
+
+const btnEnviar =
+    document.getElementById("btnEnviar");
+
+const contenedorMensajes =
+    document.getElementById("mensajes");
+
+
+
+// ==========================================
+// OBTENER HORA ACTUAL
+// ==========================================
+
+function obtenerHora(){
+
+    const fecha =
+        new Date();
+
+    return fecha.toLocaleTimeString(
+        "es-CO",
+        {
+            hour: "2-digit",
+            minute: "2-digit"
+        }
+    );
+
+}
+
+
+
+// ==========================================
+// CREAR MENSAJE
+// ==========================================
+
+function crearMensaje(
+    texto,
+    tipo
+){
+
+    // Crear contenedor del mensaje
+
+    const mensaje =
+        document.createElement("div");
+
+
+    mensaje.classList.add(
+        "mensaje"
+    );
+
+
+    // Agregar tipo de mensaje
+
+    if(tipo === "usuario"){
+
+        mensaje.classList.add(
+            "mensaje-usuario"
+        );
+
+    }else{
+
+        mensaje.classList.add(
+            "mensaje-nutricionista"
+        );
+
+    }
+
+
+    // Crear texto
+
+    const contenido =
+        document.createElement("p");
+
+    contenido.textContent =
+        texto;
+
+
+    // Crear hora
+
+    const hora =
+        document.createElement("span");
+
+    hora.textContent =
+        obtenerHora();
+
+
+    hora.classList.add(
+        "hora"
+    );
+
+
+    // Agregar elementos
+
+    mensaje.appendChild(
+        contenido
+    );
+
+    mensaje.appendChild(
+        hora
+    );
+
+
+    // Agregar mensaje al chat
+
+    contenedorMensajes.appendChild(
+        mensaje
+    );
+
+
+    // Bajar automáticamente al último mensaje
+
+    contenedorMensajes.scrollTop =
+        contenedorMensajes.scrollHeight;
+
+}
+
+
+
+// ==========================================
+// ENVIAR MENSAJE
+// ==========================================
+
+function enviarMensaje(){
+
+    const texto =
+        inputMensaje.value.trim();
+
+
+    // No permitir mensajes vacíos
+
+    if(texto === ""){
+
+        return;
+
+    }
+
+
+    // Mostrar mensaje del usuario
+
+    crearMensaje(
+        texto,
+        "usuario"
+    );
+
+
+    // Limpiar input
+
+    inputMensaje.value = "";
+
+
+    // Volver a seleccionar el input
+
+    inputMensaje.focus();
+
+
+    // ======================================
+    // RESPUESTA SIMULADA
+    // ======================================
+
+    setTimeout(
+        function(){
+
+            crearMensaje(
+                "Gracias por escribir. Revisaré tu mensaje y te responderé lo antes posible.",
+                "nutricionista"
+            );
+
+        },
+        1000
+    );
+
+}
+
+
+
+// ==========================================
+// BOTÓN ENVIAR
+// ==========================================
+
+btnEnviar.addEventListener(
+    "click",
+    enviarMensaje
+);
+
+
+
+// ==========================================
+// ENTER PARA ENVIAR
+// ==========================================
+
+inputMensaje.addEventListener(
+    "keydown",
+    function(event){
+
+        if(event.key === "Enter"){
+
+            event.preventDefault();
+
+            enviarMensaje();
+
+        }
+
+    }
+);
+
+
+
+// ==========================================
+// MENSAJE INICIAL
+// ==========================================
+
+crearMensaje(
+    "¡Hola! Soy tu nutricionista. ¿En qué puedo ayudarte?",
+    "nutricionista"
+);
+
+
+</script>
+
+
 </body>
+
 </html>

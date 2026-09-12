@@ -1,214 +1,533 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-body{
-    background:#f4f8fb;
+body {
+    background: #eef7fc;
+    overflow-x: hidden;
 }
 
-/* CONTENEDOR */
 
-.container{
-    display:flex;
-    height:100vh;
+/* ================= CONTENEDOR ================= */
+
+.container {
+    display: flex;
+    min-height: 100vh;
 }
+
 
 /* ================= SIDEBAR ================= */
 
-.sidebar{
-    width:300px;
-    background:#03a9f4;
-    color:white;
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
-    padding:35px 30px;
+.sidebar {
+    width: 300px;
+    background: #03a9f4;
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 35px 30px;
+
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+
+    z-index: 10;
 }
 
-/* LOGO */
 
-.logo a{
-    font-family:"Pacifico", cursive;
-    font-size:40px;
-    color:white;
-    text-decoration:none;
-    display:inline-block;
-    transition:.3s;
+/* ================= LOGO ================= */
+
+.logo a {
+    font-family: "Pacifico", cursive;
+    font-size: 40px;
+    color: white;
+
+    text-decoration: none;
+    display: inline-block;
+
+    transition: 0.3s;
 }
 
-.logo a:hover{
-    color:#b5e6fa;
+.logo a:hover {
+    color: #dff6ff;
 }
 
-/* MENÚ */
 
-.sidebar ul{
-    list-style:none;
-    margin-top:20px;
+/* ================= MENÚ ================= */
+
+.sidebar nav {
+    flex: 1;
+
+    display: flex;
+    align-items: center;
 }
 
-.sidebar li{
-    margin-bottom:18px;
+.sidebar ul {
+    list-style: none;
+
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
 }
 
-/* Solo enlaces del menú */
+.sidebar li {
+    margin-bottom: 18px;
+}
 
-.sidebar ul li a{
-    display:block;
-    background:#0288d1;
-    color:white;
-    text-decoration:none;
-    font-size:20px;
-    padding:18px 20px;
-    border-radius:15px;
-    transition:.3s;
+.sidebar li:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ENLACES DEL MENÚ */
+
+.sidebar ul li a {
+    display: block;
+
+    width: 100%;
+
+    background: #0288d1;
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 20px;
+
+    padding: 18px 20px;
+
+    border-radius: 15px;
+
+    text-align: left;
+
+    transition: 0.3s;
 }
 
 .sidebar ul li a:hover,
-.sidebar ul li a.activo{
-    background:#01579b;
+.sidebar ul li a.activo {
+    background: #01579b;
 }
 
-/* CERRAR SESIÓN */
 
-.logout{
-    color:white;
-    text-decoration:none;
-    font-size:18px;
-    transition:.3s;
+/* ================= CONFIGURACIÓN ================= */
+
+.configuracion {
+    display: block;
+
+    width: 100%;
+
+    background: #0288d1;
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 18px;
+
+    padding: 16px 20px;
+
+    border-radius: 15px;
+
+    text-align: left;
+
+    transition: 0.3s;
 }
 
-.logout:hover{
-    color:#dff6ff;
+.configuracion:hover,
+.configuracion.activo {
+    background: #01579b;
 }
+
 
 /* ================= CHAT ================= */
 
-.chat{
-    flex:1;
-    display:flex;
-    background:white;
+.chat {
+    display: flex;
+
+    width: calc(100% - 300px);
+    min-width: 0;
+
+    margin-left: 300px;
+
+    min-height: 100vh;
+
+    background: white;
 }
+
 
 /* ================= PACIENTES ================= */
 
-.pacientes{
-    width:300px;
-    border-right:1px solid #ddd;
-    background:#f8fbfd;
-    padding:30px;
-    overflow-y:auto;
+.pacientes {
+    width: 300px;
+    min-width: 0;
+
+    border-right: 1px solid #ddd;
+
+    background: #f8fbfd;
+
+    padding: 30px;
+
+    overflow-y: auto;
 }
 
-.pacientes h2{
-    color:#01579b;
-    margin-bottom:30px;
-    font-size:28px;
+.pacientes h2 {
+    color: #01579b;
+
+    margin-bottom: 30px;
+
+    font-size: 28px;
 }
 
-.paciente{
-    background:white;
-    padding:18px;
-    margin-bottom:15px;
-    border-radius:15px;
-    cursor:pointer;
-    transition:.3s;
-    box-shadow:0 3px 10px rgba(0,0,0,.05);
+
+/* PACIENTE */
+
+.paciente {
+    background: white;
+
+    padding: 18px;
+
+    margin-bottom: 15px;
+
+    border-radius: 15px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
 }
 
-.paciente:hover{
-    background:#e1f5fe;
+.paciente:hover {
+    background: #e1f5fe;
 }
 
-.seleccionado{
-    background:#03a9f4;
-    color:white;
+.paciente.seleccionado {
+    background: #03a9f4;
+    color: white;
 }
+
 
 /* ================= CONVERSACIÓN ================= */
 
-.conversacion{
-    flex:1;
-    display:flex;
-    flex-direction:column;
+.conversacion {
+    flex: 1;
+
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
 }
 
-/* CABECERA */
 
-.cabecera-chat{
-    height:90px;
-    padding:20px 35px;
-    border-bottom:1px solid #ddd;
-    display:flex;
-    align-items:center;
+/* ================= CABECERA ================= */
+
+.cabecera-chat {
+    height: 90px;
+
+    padding: 20px 35px;
+
+    border-bottom: 1px solid #ddd;
+
+    display: flex;
+    align-items: center;
+
+    flex-shrink: 0;
 }
 
-.cabecera-chat h2{
-    color:#01579b;
-    margin-bottom:5px;
+.cabecera-chat h2 {
+    color: #01579b;
+
+    margin-bottom: 5px;
 }
 
-.cabecera-chat p{
-    color:#777;
+.cabecera-chat p {
+    color: #777;
 }
 
-/* MENSAJES */
 
-.mensajes{
-    flex:1;
-    background:#eef7fc;
-    padding:30px;
-    overflow-y:auto;
+/* ================= MENSAJES ================= */
+
+.mensajes {
+    flex: 1;
+
+    min-height: 0;
+
+    background: #eef7fc;
+
+    padding: 30px;
+
+    overflow-y: auto;
 }
 
-/* ENVIAR */
 
-.enviar{
-    display:flex;
-    gap:15px;
-    padding:20px 30px;
-    border-top:1px solid #ddd;
-    background:white;
+/* ================= ENVIAR ================= */
+
+.enviar {
+    display: flex;
+
+    gap: 15px;
+
+    padding: 20px 30px;
+
+    border-top: 1px solid #ddd;
+
+    background: white;
+
+    flex-shrink: 0;
 }
 
-.enviar input{
-    flex:1;
-    padding:15px 20px;
-    border:1px solid #ccc;
-    border-radius:30px;
-    outline:none;
-    font-size:16px;
+.enviar input {
+    flex: 1;
+
+    min-width: 0;
+
+    padding: 15px 20px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 30px;
+
+    outline: none;
+
+    font-size: 16px;
 }
 
-.enviar input:focus{
-    border-color:#03a9f4;
+.enviar input:focus {
+    border-color: #03a9f4;
 }
 
-.enviar button{
-    border:none;
-    background:#0288d1;
-    color:white;
-    padding:15px 35px;
-    border-radius:30px;
-    cursor:pointer;
-    font-size:16px;
-    transition:.3s;
+.enviar button {
+    border: none;
+
+    background: #0288d1;
+    color: white;
+
+    padding: 15px 35px;
+
+    border-radius: 30px;
+
+    cursor: pointer;
+
+    font-size: 16px;
+
+    transition: 0.3s;
 }
 
-.enviar button:hover{
-    background:#01579b;
+.enviar button:hover {
+    background: #01579b;
 }
 
-/* SCROLL */
 
-::-webkit-scrollbar{
-    width:8px;
+/* ================= MENSAJES ================= */
+
+.mensaje {
+    max-width: 65%;
+
+    padding: 12px 18px;
+
+    margin-bottom: 15px;
+
+    border-radius: 18px;
+
+    line-height: 1.5;
+
+    font-size: 16px;
+
+    overflow-wrap: anywhere;
 }
 
-::-webkit-scrollbar-thumb{
-    background:#b3e5fc;
-    border-radius:10px;
+
+/* MENSAJES DEL PACIENTE */
+
+.mensaje.paciente {
+    background: white;
+
+    color: #444;
+
+    margin-right: auto;
+
+    border-bottom-left-radius: 5px;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+
+/* MENSAJES DEL NUTRICIONISTA */
+
+.mensaje.nutricionista {
+    background: #03a9f4;
+
+    color: white;
+
+    margin-left: auto;
+
+    border-bottom-right-radius: 5px;
+}
+
+
+/* HORA */
+
+.mensaje small {
+    display: block;
+
+    margin-top: 5px;
+
+    font-size: 12px;
+
+    opacity: 0.7;
+
+    text-align: right;
+}
+
+
+/* ================= SCROLL ================= */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #b3e5fc;
+
+    border-radius: 10px;
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 900px) {
+
+    .sidebar {
+        width: 240px;
+        padding: 30px 22px;
+    }
+
+    .chat {
+        width: calc(100% - 240px);
+        margin-left: 240px;
+    }
+
+    .pacientes {
+        width: 250px;
+        padding: 25px;
+    }
+
+    .cabecera-chat {
+        padding: 20px 25px;
+    }
+
+    .mensajes {
+        padding: 25px;
+    }
+
+    .enviar {
+        padding: 18px 25px;
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .container {
+        display: block;
+    }
+
+    .sidebar {
+        position: relative;
+
+        width: 100%;
+
+        min-height: auto;
+
+        padding: 25px 20px;
+    }
+
+    .sidebar nav {
+        display: block;
+
+        margin-top: 25px;
+    }
+
+    .sidebar ul {
+        width: 100%;
+    }
+
+    .sidebar li {
+        margin-bottom: 12px;
+    }
+
+    .configuracion {
+        margin-top: 20px;
+    }
+
+
+    .chat {
+        width: 100%;
+
+        margin-left: 0;
+
+        min-height: calc(100vh - 300px);
+
+        flex-direction: column;
+    }
+
+
+    .pacientes {
+        width: 100%;
+
+        border-right: none;
+
+        border-bottom: 1px solid #ddd;
+
+        padding: 20px;
+    }
+
+    .pacientes h2 {
+        margin-bottom: 18px;
+    }
+
+
+    .paciente {
+        margin-bottom: 10px;
+    }
+
+
+    .cabecera-chat {
+        height: 75px;
+
+        padding: 18px 20px;
+    }
+
+
+    .mensajes {
+        padding: 20px;
+    }
+
+
+    .mensaje {
+        max-width: 85%;
+    }
+
+
+    .enviar {
+        padding: 15px;
+
+        gap: 10px;
+    }
+
+
+    .enviar input {
+        padding: 13px 16px;
+    }
+
+
+    .enviar button {
+        padding: 13px 20px;
+    }
+
 }

@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Yuno-Doc</title>
-<link rel="stylesheet" href="login-doc.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Yuno-Doc</title>
+
+    <link rel="stylesheet" href="login-doc.css">
 </head>
 
 <body>
@@ -14,31 +17,259 @@
     <!-- IZQUIERDA -->
     <div class="left"></div>
 
+
     <!-- DERECHA -->
     <div class="right">
 
-        <img src="media/yuno-doclogo.png" class="logo" alt="logo">
+        <img
+            src="media/yuno-doclogo.png"
+            class="logo"
+            alt="logo"
+        >
 
         <p class="subtitle">
             Nutrición inteligente para una vida sin límites
         </p>
 
-        <form class="formulario">
 
-            <input type="text" placeholder="Correo institucional" required>
-            <input type="password" placeholder="Contraseña" required>
+        <form class="formulario" id="formularioLogin">
 
-            <a href="#" class="forgot">¿Olvidaste tu contraseña?</a>
+            <!-- CORREO -->
+            <input
+                type="email"
+                id="correo"
+                placeholder="Correo electrónico"
+                required
+            >
 
-            <button type="submit" class="btn">Acceder</button>
+
+            <!-- CONTRASEÑA -->
+            <div class="password-container">
+
+                <input
+                    type="password"
+                    id="contraseña"
+                    placeholder="Contraseña"
+                    required
+                >
+
+                <button
+                    type="button"
+                    id="mostrarContraseña"
+                >
+                    Mostrar
+                </button>
+
+            </div>
+
+
+            <!-- RECUPERAR CONTRASEÑA -->
+            <a href="recuperar-doc.html" class="forgot">
+                ¿Olvidaste tu contraseña?
+            </a>
+
+
+            <!-- BOTÓN -->
+            <button
+                type="submit"
+                class="btn"
+                id="btnAcceder"
+            >
+                Acceder
+            </button>
+
+
+            <!-- MENSAJE -->
+            <p id="mensaje"></p>
 
         </form>
 
-        <a href="registro.html" class="registro">Registrate</a>
+
+        <a href="registro-doc.html" class="registro">
+            Registrate
+        </a>
 
     </div>
 
 </div>
+
+
+<script>
+
+    // ELEMENTOS
+
+    const formulario = document.getElementById("formularioLogin");
+
+    const correo = document.getElementById("correo");
+
+    const contraseña = document.getElementById("contraseña");
+
+    const mostrarContraseña =
+        document.getElementById("mostrarContraseña");
+
+    const mensaje =
+        document.getElementById("mensaje");
+
+    const btnAcceder =
+        document.getElementById("btnAcceder");
+
+
+    // MOSTRAR / OCULTAR CONTRASEÑA
+
+    mostrarContraseña.addEventListener("click", () => {
+
+        if (contraseña.type === "password") {
+
+            contraseña.type = "text";
+
+            mostrarContraseña.textContent = "Ocultar";
+
+        } else {
+
+            contraseña.type = "password";
+
+            mostrarContraseña.textContent = "Mostrar";
+
+        }
+
+    });
+
+
+    // LOGIN
+
+    formulario.addEventListener("submit", async (event) => {
+
+        event.preventDefault();
+
+
+        const correoValor = correo.value.trim();
+
+        const contraseñaValor = contraseña.value;
+
+
+        // LIMPIAR MENSAJE
+
+        mensaje.textContent = "";
+
+
+        // VALIDAR CAMPOS
+
+        if (!correoValor || !contraseñaValor) {
+
+            mensaje.textContent =
+                "Completa todos los campos.";
+
+            return;
+        }
+
+
+        // DESACTIVAR BOTÓN
+
+        btnAcceder.disabled = true;
+
+        btnAcceder.textContent = "Ingresando...";
+
+
+        try {
+
+            const respuesta = await fetch(
+                "http://172.29.80.73:3000/auth/login",
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+
+                    body: JSON.stringify({
+                        correo: correoValor,
+                        contraseña: contraseñaValor
+                    })
+                }
+            );
+
+
+            const datos = await respuesta.json();
+
+
+            // LOGIN CORRECTO
+
+            if (respuesta.ok) {
+
+                mensaje.style.color = "#0288d1";
+
+                mensaje.textContent =
+                    datos.mensaje ||
+                    "Inicio de sesión exitoso.";
+
+
+                // GUARDAR USUARIO
+
+                if (datos.usuario) {
+
+                    localStorage.setItem(
+                        "usuario",
+                        JSON.stringify(datos.usuario)
+                    );
+
+                }
+
+
+                // GUARDAR TOKEN
+
+                if (datos.token) {
+
+                    localStorage.setItem(
+                        "token",
+                        datos.token
+                    );
+
+                }
+
+
+                // IR AL PERFIL DEL NUTRICIONISTA
+
+                setTimeout(() => {
+
+                    window.location.href =
+                        "perfil-doc.html";
+
+                }, 1000);
+
+
+            } else {
+
+                mensaje.style.color = "#d32f2f";
+
+                mensaje.textContent =
+                    datos.mensaje ||
+                    "Correo o contraseña incorrectos.";
+
+                btnAcceder.disabled = false;
+
+                btnAcceder.textContent = "Acceder";
+
+            }
+
+
+        } catch (error) {
+
+            console.error("Error:", error);
+
+            mensaje.style.color = "#d32f2f";
+
+            mensaje.textContent =
+                "No se pudo conectar con el servidor.";
+
+            btnAcceder.disabled = false;
+
+            btnAcceder.textContent = "Acceder";
+
+        }
+
+    });
+
+</script>
 
 </body>
 </html>

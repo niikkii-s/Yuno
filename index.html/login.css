@@ -96,3 +96,52 @@ input::placeholder{
     color:#6f8f2f;
     text-decoration:underline;
 }
+
+/* CONTENEDOR DE CONTRASEÑA */
+
+.password-container{
+    position:relative;
+    width:340px;
+}
+
+.password-container input{
+    width:100%;
+    padding-right:90px;
+}
+
+.password-container button{
+    position:absolute;
+    right:15px;
+    top:50%;
+    transform:translateY(-50%);
+
+    border:none;
+    background:transparent;
+
+    color:white;
+    font-size:14px;
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+.password-container button:hover{
+    text-decoration:underline;
+}
+
+
+/* MENSAJE */
+
+#mensaje{
+    margin-top:15px;
+    font-size:14px;
+    color:#d32f2f;
+}
+
+
+/* BOTÓN DESACTIVADO */
+
+.btn:disabled{
+    opacity:0.7;
+    cursor:not-allowed;
+}

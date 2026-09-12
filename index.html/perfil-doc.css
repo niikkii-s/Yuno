@@ -1,184 +1,357 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-body{
-    background:#f4f8fb;
+body {
+    background: #eef7fc;
+    overflow-x: hidden;
 }
 
-/* CONTENEDOR */
-
-.container{
-    display:flex;
-    height:100vh;
+.container {
+    display: flex;
+    min-height: 100vh;
 }
 
-/* ================= SIDEBAR ================= */
+/* =========================
+   SIDEBAR
+========================= */
 
-.sidebar{
-    width:300px;
-    background:#03a9f4;
-    color:white;
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
-    padding:35px 30px;
+.sidebar {
+    width: 300px;
+    background: #03a9f4;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 35px 30px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 10;
 }
 
-/* LOGO */
-
-.logo a{
-    font-family:"Pacifico", cursive;
-    font-size:40px;
-    color:white;
-    text-decoration:none;
-    display:inline-block;
-    transition:.3s;
+.logo a {
+    font-family: "Pacifico", cursive;
+    font-size: 40px;
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    transition: 0.3s;
 }
 
-.logo a:hover{
-    color:#b5e6fa;
+.logo a:hover {
+    color: #dff6ff;
 }
 
-/* MENÚ */
+/* =========================
+   MENÚ
+========================= */
 
-.sidebar ul{
-    list-style:none;
-    margin-top:20px;
+.sidebar nav {
+    flex: 1;
+    display: flex;
+    align-items: center;
 }
 
-.sidebar li{
-    margin-bottom:18px;
+.sidebar ul {
+    list-style: none;
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
-.sidebar ul li a{
-    display:block;
-    background:#0288d1;
-    color:white;
-    text-decoration:none;
-    font-size:20px;
-    padding:18px 20px;
-    border-radius:15px;
-    transition:.3s;
+.sidebar li {
+    margin-bottom: 18px;
+}
+
+.sidebar li:last-child {
+    margin-bottom: 0;
+}
+
+.sidebar ul li a {
+    display: block;
+    width: 100%;
+    background: #0288d1;
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 18px 20px;
+    border-radius: 15px;
+    text-align: left;
+    transition: 0.3s;
 }
 
 .sidebar ul li a:hover,
-.sidebar ul li a.activo{
-    background:#01579b;
+.sidebar ul li a.activo {
+    background: #01579b;
 }
 
-/* CERRAR SESIÓN */
+/* =========================
+   CONFIGURACIÓN
+========================= */
 
-.logout{
-    color:white;
-    text-decoration:none;
-    font-size:18px;
-    transition:.3s;
+.configuracion {
+    display: block;
+    width: 100%;
+    color: white;
+    background: #0288d1;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 16px 20px;
+    border-radius: 15px;
+    text-align: left;
+    transition: 0.3s;
 }
 
-.logout:hover{
-    color:#dff6ff;
+.configuracion:hover,
+.configuracion.activo {
+    background: #01579b;
 }
 
-/* ================= PERFIL ================= */
+/* =========================
+   CONTENIDO DEL PERFIL
+========================= */
 
-.perfil{
-    flex:1;
-    background:#eef7fc;
-    padding:40px;
-    overflow-y:auto;
+.perfil {
+    flex: 1;
+    width: calc(100% - 300px);
+    min-width: 0;
+    margin-left: 300px;
+    background: #eef7fc;
+    padding: 40px;
+    min-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
-/* CABECERA */
+/* =========================
+   CABECERA
+========================= */
 
-.cabecera{
-    margin-bottom:40px;
+.cabecera {
+    margin-bottom: 35px;
 }
 
-.cabecera h2{
-    color:#01579b;
-    font-size:36px;
-    margin-bottom:10px;
+.cabecera h2 {
+    color: #01579b;
+    font-size: 36px;
+    margin-bottom: 10px;
 }
 
-.cabecera p{
-    color:#666;
-    font-size:18px;
+.cabecera p {
+    color: #666;
+    font-size: 18px;
 }
 
-/* TARJETAS */
+/* =========================
+   TARJETAS
+========================= */
 
-.cards{
-    display:flex;
-    gap:30px;
-    flex-wrap:wrap;
+.cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 30px;
+    width: 100%;
+    max-width: 1100px;
+    min-width: 0;
 }
 
-/* CARD */
-
-.card{
-    flex:1;
-    min-width:380px;
-    background:white;
-    padding:35px;
-    border-radius:18px;
-    box-shadow:0 3px 10px rgba(0,0,0,.05);
-    transition:.3s;
+.card {
+    width: 100%;
+    min-width: 0;
+    background: white;
+    padding: 30px;
+    border-radius: 18px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    transition: 0.3s;
+    overflow: hidden;
 }
 
-.card:hover{
-    transform:translateY(-5px);
+.card:hover {
+    transform: translateY(-4px);
 }
 
-/* ICONO */
-
-.icon{
-    font-size:48px;
-    margin-bottom:20px;
+.icon {
+    font-size: 42px;
+    margin-bottom: 15px;
 }
 
-/* TITULO */
-
-.card h3{
-    color:#01579b;
-    margin-bottom:25px;
-    font-size:26px;
+.card h3 {
+    color: #01579b;
+    font-size: 24px;
+    margin-bottom: 20px;
 }
 
-/* DATOS */
+/* =========================
+   DATOS
+========================= */
 
-.dato{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:16px 0;
-    border-bottom:1px solid #eee;
+.dato {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    min-width: 0;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
 }
 
-.dato:last-child{
-    border-bottom:none;
+.dato:last-child {
+    border-bottom: none;
 }
 
-.dato span{
-    color:#666;
-    font-size:17px;
+.dato span {
+    color: #666;
+    font-size: 15px;
+    flex-shrink: 0;
 }
 
-.dato strong{
-    color:#01579b;
-    font-size:17px;
+.dato strong {
+    color: #01579b;
+    font-size: 15px;
+    text-align: right;
+    min-width: 0;
+    max-width: 60%;
+    overflow-wrap: anywhere;
+    word-break: break-word;
 }
 
-/* SCROLL */
+/* =========================
+   SCROLLBAR
+========================= */
 
-::-webkit-scrollbar{
-    width:8px;
+::-webkit-scrollbar {
+    width: 8px;
 }
 
-::-webkit-scrollbar-thumb{
-    background:#b3e5fc;
-    border-radius:10px;
+::-webkit-scrollbar-thumb {
+    background: #b3e5fc;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 1100px) {
+
+    .perfil {
+        padding: 30px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+        max-width: 800px;
+    }
+}
+
+/* =========================
+   PANTALLAS MEDIANAS
+========================= */
+
+@media (max-width: 900px) {
+
+    .sidebar {
+        width: 240px;
+        padding: 30px 22px;
+    }
+
+    .perfil {
+        width: calc(100% - 240px);
+        margin-left: 240px;
+        padding: 30px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+        width: 100%;
+    }
+
+    .sidebar ul li a {
+        font-size: 18px;
+        padding: 16px;
+    }
+
+    .configuracion {
+        font-size: 17px;
+        padding: 15px;
+    }
+}
+
+/* =========================
+   CELULAR
+========================= */
+
+@media (max-width: 650px) {
+
+    .container {
+        display: block;
+    }
+
+    .sidebar {
+        position: relative;
+        width: 100%;
+        min-height: auto;
+        padding: 25px 20px;
+    }
+
+    .sidebar nav {
+        display: block;
+        margin-top: 25px;
+    }
+
+    .sidebar ul {
+        width: 100%;
+    }
+
+    .sidebar li {
+        margin-bottom: 12px;
+    }
+
+    .configuracion {
+        margin-top: 20px;
+    }
+
+    .perfil {
+        width: 100%;
+        margin-left: 0;
+        padding: 25px 20px;
+    }
+
+    .cabecera h2 {
+        font-size: 30px;
+    }
+
+    .cabecera p {
+        font-size: 16px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        width: 100%;
+    }
+
+    .card {
+        padding: 24px;
+    }
+
+    .dato {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+
+    .dato strong {
+        max-width: 100%;
+        text-align: left;
+    }
 }

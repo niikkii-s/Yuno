@@ -1,10 +1,17 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
+
     <title>Yuno - Registro</title>
+
     <link rel="stylesheet" href="registro.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 </head>
 
 <body>
@@ -13,7 +20,9 @@
 
     <h2>Crear cuenta</h2>
 
+
     <!-- INFORMACIÓN PERSONAL -->
+
     <input
         type="text"
         id="nombre"
@@ -21,6 +30,7 @@
         placeholder="Nombre completo"
         required
     >
+
 
     <input
         type="email"
@@ -30,7 +40,9 @@
         required
     >
 
+
     <!-- EDAD -->
+
     <input
         type="number"
         id="edad"
@@ -41,23 +53,55 @@
         required
     >
 
-    <input
-        type="password"
-        id="contraseña"
-        name="contraseña"
-        placeholder="Contraseña"
-        required
-    >
 
-    <input
-        type="password"
-        id="confirmarContraseña"
-        name="confirmarContraseña"
-        placeholder="Confirmar contraseña"
-        required
-    >
+    <!-- CONTRASEÑA -->
+
+    <div class="password-container">
+
+        <input
+            type="password"
+            id="contraseña"
+            name="contraseña"
+            placeholder="Contraseña"
+            required
+        >
+
+        <button
+            type="button"
+            class="mostrar-btn"
+            id="mostrarContraseña"
+        >
+            Mostrar
+        </button>
+
+    </div>
+
+
+    <!-- CONFIRMAR CONTRASEÑA -->
+
+    <div class="password-container">
+
+        <input
+            type="password"
+            id="confirmarContraseña"
+            name="confirmarContraseña"
+            placeholder="Confirmar contraseña"
+            required
+        >
+
+        <button
+            type="button"
+            class="mostrar-btn"
+            id="mostrarConfirmar"
+        >
+            Mostrar
+        </button>
+
+    </div>
+
 
     <!-- DATOS FÍSICOS -->
+
     <div class="fila">
 
         <input
@@ -80,67 +124,250 @@
 
     </div>
 
+
     <!-- OBJETIVO / DIETA -->
-    <select id="objetivo" name="objetivo" required>
-        <option value="" disabled selected>
+
+    <select
+        id="objetivo"
+        name="objetivo"
+        required
+    >
+
+        <option
+            value=""
+            disabled
+            selected
+        >
             Restricciones o dieta
         </option>
 
-        <option value="Vegetariano">Vegetariano</option>
-        <option value="Vegano">Vegano</option>
-        <option value="Sin gluten">Sin gluten</option>
+        <option value="Vegetariano">
+            Vegetariano
+        </option>
+
+        <option value="Vegano">
+            Vegano
+        </option>
+
+        <option value="Sin gluten">
+            Sin gluten
+        </option>
+
         <option value="Intolerante a la lactosa">
             Intolerante a la lactosa
         </option>
-        <option value="Ninguna">Ninguna</option>
+
+        <option value="Ninguna">
+            Ninguna
+        </option>
+
     </select>
 
-    <button type="button" class="btn" id="btnRegistrar">
+
+    <!-- BOTÓN REGISTRARSE -->
+
+    <button
+        type="button"
+        class="btn"
+        id="btnRegistrar"
+    >
         Registrarse
     </button>
 
+
+    <!-- MENSAJE -->
+
     <p id="mensaje"></p>
 
-    <a href="login.html">Volver a la página principal</a>
+
+    <!-- VOLVER AL LOGIN -->
+
+    <a href="login.html">
+        Volver a la página principal
+    </a>
 
 </div>
 
+
 <script>
 
-    const boton = document.getElementById("btnRegistrar");
-    const mensaje = document.getElementById("mensaje");
+    // ==========================================
+    // ELEMENTOS
+    // ==========================================
+
+    const boton =
+        document.getElementById("btnRegistrar");
+
+    const mensaje =
+        document.getElementById("mensaje");
+
+    const contraseña =
+        document.getElementById("contraseña");
+
+    const confirmarContraseña =
+        document.getElementById("confirmarContraseña");
+
+    const mostrarContraseña =
+        document.getElementById("mostrarContraseña");
+
+    const mostrarConfirmar =
+        document.getElementById("mostrarConfirmar");
+
+
+    // ==========================================
+    // MOSTRAR / OCULTAR CONTRASEÑA
+    // ==========================================
+
+    mostrarContraseña.addEventListener("click", () => {
+
+        if (contraseña.type === "password") {
+
+            contraseña.type = "text";
+
+            mostrarContraseña.textContent = "Ocultar";
+
+        } else {
+
+            contraseña.type = "password";
+
+            mostrarContraseña.textContent = "Mostrar";
+
+        }
+
+    });
+
+
+    // ==========================================
+    // MOSTRAR / OCULTAR CONFIRMACIÓN
+    // ==========================================
+
+    mostrarConfirmar.addEventListener("click", () => {
+
+        if (confirmarContraseña.type === "password") {
+
+            confirmarContraseña.type = "text";
+
+            mostrarConfirmar.textContent = "Ocultar";
+
+        } else {
+
+            confirmarContraseña.type = "password";
+
+            mostrarConfirmar.textContent = "Mostrar";
+
+        }
+
+    });
+
+
+    // ==========================================
+    // REGISTRAR USUARIO
+    // ==========================================
 
     boton.addEventListener("click", async () => {
 
-        // Obtener los datos del formulario
-        const nombre = document.getElementById("nombre").value.trim();
-        const correo = document.getElementById("correo").value.trim();
-        const edad = document.getElementById("edad").value;
-        const contraseña = document.getElementById("contraseña").value;
-        const confirmarContraseña =
-            document.getElementById("confirmarContraseña").value;
-        const peso = document.getElementById("peso").value;
-        const altura = document.getElementById("altura").value;
-        const objetivo = document.getElementById("objetivo").value;
+        const nombre =
+            document.getElementById("nombre").value.trim();
 
-        // Comprobar que las contraseñas coincidan
-        if (contraseña !== confirmarContraseña) {
-            mensaje.textContent = "Las contraseñas no coinciden.";
+        const correo =
+            document.getElementById("correo").value.trim();
+
+        const edad =
+            document.getElementById("edad").value;
+
+        const contraseñaValor =
+            contraseña.value;
+
+        const confirmarContraseñaValor =
+            confirmarContraseña.value;
+
+        const peso =
+            document.getElementById("peso").value;
+
+        const altura =
+            document.getElementById("altura").value;
+
+        const objetivo =
+            document.getElementById("objetivo").value;
+
+
+        // ==========================================
+        // VALIDAR CAMPOS
+        // ==========================================
+
+        if (
+            nombre === "" ||
+            correo === "" ||
+            edad === "" ||
+            contraseñaValor === "" ||
+            confirmarContraseñaValor === "" ||
+            peso === "" ||
+            altura === "" ||
+            objetivo === ""
+        ) {
+
+            mensaje.textContent =
+                "Por favor, completa todos los campos.";
+
             return;
+
         }
 
-        // Datos que se enviarán al backend
+
+        // ==========================================
+        // VALIDAR CONTRASEÑAS
+        // ==========================================
+
+        if (
+            contraseñaValor !==
+            confirmarContraseñaValor
+        ) {
+
+            mensaje.textContent =
+                "Las contraseñas no coinciden.";
+
+            return;
+
+        }
+
+
+        // ==========================================
+        // DESACTIVAR BOTÓN
+        // ==========================================
+
+        boton.disabled = true;
+
+        boton.textContent = "Registrando...";
+
+
+        // ==========================================
+        // DATOS DEL USUARIO
+        // ==========================================
+
         const datosUsuario = {
+
             nombre,
+
             correo,
-            contraseña,
+
+            contraseña: contraseñaValor,
+
             edad: Number(edad),
+
             peso: Number(peso),
+
             altura: Number(altura),
+
             objetivo
+
         };
 
+
         try {
+
+            // ==========================================
+            // ENVIAR AL BACKEND
+            // ==========================================
 
             const respuesta = await fetch(
                 "http://172.29.80.73:3000/auth/register",
@@ -152,39 +379,73 @@
                     },
 
                     body: JSON.stringify(datosUsuario)
+
                 }
             );
 
-            const datos = await respuesta.json();
+
+            // ==========================================
+            // RESPUESTA DEL SERVIDOR
+            // ==========================================
+
+            const datos =
+                await respuesta.json();
+
+
+            // ==========================================
+            // REGISTRO CORRECTO
+            // ==========================================
 
             if (respuesta.ok) {
 
                 mensaje.textContent =
-                    datos.mensaje || "Usuario registrado correctamente.";
+                    datos.mensaje ||
+                    "Usuario registrado correctamente.";
 
-                // Limpiar formulario
-                document.getElementById("nombre").value = "";
-                document.getElementById("correo").value = "";
-                document.getElementById("edad").value = "";
-                document.getElementById("contraseña").value = "";
-                document.getElementById("confirmarContraseña").value = "";
-                document.getElementById("peso").value = "";
-                document.getElementById("altura").value = "";
-                document.getElementById("objetivo").value = "";
 
-            } else {
+                setTimeout(() => {
 
-                mensaje.textContent =
-                    datos.mensaje || "No se pudo registrar el usuario.";
+                    window.location.href =
+                        "perfil.html";
+
+                }, 1000);
 
             }
 
-        } catch (error) {
+
+            // ==========================================
+            // ERROR DE REGISTRO
+            // ==========================================
+
+            else {
+
+                mensaje.textContent =
+                    datos.mensaje ||
+                    "No se pudo registrar el usuario.";
+
+                boton.disabled = false;
+
+                boton.textContent = "Registrarse";
+
+            }
+
+        }
+
+
+        // ==========================================
+        // ERROR DE CONEXIÓN
+        // ==========================================
+
+        catch (error) {
 
             console.error("Error:", error);
 
             mensaje.textContent =
                 "No se pudo conectar con el servidor.";
+
+            boton.disabled = false;
+
+            boton.textContent = "Registrarse";
 
         }
 

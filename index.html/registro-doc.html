@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
+
     <title>Yuno-Doc</title>
+
     <link rel="stylesheet" href="registro-doc.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
@@ -13,30 +17,364 @@
 
     <h2>Crear cuenta</h2>
 
+
     <!-- INFORMACIÓN PERSONAL -->
-    <input type="text" placeholder="Nombre(s)" required>
-    <input type="text" placeholder="Apellido(s)" required>
-    <input type="email" placeholder="Correo electrónico" required>
-    <input type="tel" placeholder="Teléfono" required>
+
+    <input
+        type="text"
+        id="nombre"
+        placeholder="Nombre(s)"
+        required
+    >
+
+    <input
+        type="text"
+        id="apellido"
+        placeholder="Apellido(s)"
+        required
+    >
+
+    <input
+        type="email"
+        id="correo"
+        placeholder="Correo electrónico"
+        required
+    >
+
+    <input
+        type="tel"
+        id="telefono"
+        placeholder="Teléfono"
+        required
+    >
+
 
     <!-- INFORMACIÓN PROFESIONAL -->
-    <input type="text" placeholder="Número de tarjeta profesional" required>
+
+    <input
+        type="text"
+        id="tarjetaProfesional"
+        placeholder="Número de tarjeta profesional"
+        required
+    >
+
 
     <!-- CONTRASEÑA -->
-    <input type="password" placeholder="Contraseña" required>
-    <input type="password" placeholder="Confirmar contraseña" required>
 
-    <button type="submit" class="btn">
-        <a href="">Crear cuenta</a>
+    <div class="password-container">
+
+        <input
+            type="password"
+            id="contraseña"
+            placeholder="Contraseña"
+            required
+        >
+
+        <button
+            type="button"
+            class="mostrar-btn"
+            id="mostrarContraseña"
+        >
+            Mostrar
+        </button>
+
+    </div>
+
+
+    <!-- CONFIRMAR CONTRASEÑA -->
+
+    <div class="password-container">
+
+        <input
+            type="password"
+            id="confirmarContraseña"
+            placeholder="Confirmar contraseña"
+            required
+        >
+
+        <button
+            type="button"
+            class="mostrar-btn"
+            id="mostrarConfirmar"
+        >
+            Mostrar
+        </button>
+
+    </div>
+
+
+    <!-- BOTÓN REGISTRAR -->
+
+    <button
+        type="button"
+        class="btn"
+        id="btnRegistrar"
+    >
+        Crear cuenta
     </button>
 
+
+    <!-- MENSAJE -->
+
+    <p id="mensaje"></p>
+
+
+    <!-- LOGIN -->
+
     <p class="login">
-      ¿Ya tienes una cuenta?
-    <a href="login-doc.html">Inicia sesión</a>
-</p>
+        ¿Ya tienes una cuenta?
+        <a href="login-doc.html">Inicia sesión</a>
+    </p>
 
 </div>
 
+
+<script>
+
+    // ==========================================
+    // ELEMENTOS
+    // ==========================================
+
+    const contraseña =
+        document.getElementById("contraseña");
+
+    const confirmarContraseña =
+        document.getElementById("confirmarContraseña");
+
+    const mostrarContraseña =
+        document.getElementById("mostrarContraseña");
+
+    const mostrarConfirmar =
+        document.getElementById("mostrarConfirmar");
+
+    const btnRegistrar =
+        document.getElementById("btnRegistrar");
+
+    const mensaje =
+        document.getElementById("mensaje");
+
+
+    // ==========================================
+    // MOSTRAR / OCULTAR CONTRASEÑA
+    // ==========================================
+
+    mostrarContraseña.addEventListener("click", () => {
+
+        if (contraseña.type === "password") {
+
+            contraseña.type = "text";
+
+            mostrarContraseña.textContent = "Ocultar";
+
+        } else {
+
+            contraseña.type = "password";
+
+            mostrarContraseña.textContent = "Mostrar";
+
+        }
+
+    });
+
+
+    // ==========================================
+    // MOSTRAR / OCULTAR CONFIRMACIÓN
+    // ==========================================
+
+    mostrarConfirmar.addEventListener("click", () => {
+
+        if (confirmarContraseña.type === "password") {
+
+            confirmarContraseña.type = "text";
+
+            mostrarConfirmar.textContent = "Ocultar";
+
+        } else {
+
+            confirmarContraseña.type = "password";
+
+            mostrarConfirmar.textContent = "Mostrar";
+
+        }
+
+    });
+
+
+    // ==========================================
+    // REGISTRO
+    // ==========================================
+
+    btnRegistrar.addEventListener("click", async () => {
+
+        // Obtener datos
+
+        const nombre =
+            document.getElementById("nombre").value.trim();
+
+        const apellido =
+            document.getElementById("apellido").value.trim();
+
+        const correo =
+            document.getElementById("correo").value.trim();
+
+        const telefono =
+            document.getElementById("telefono").value.trim();
+
+        const tarjetaProfesional =
+            document.getElementById("tarjetaProfesional").value.trim();
+
+        const contraseñaValor =
+            contraseña.value;
+
+        const confirmarValor =
+            confirmarContraseña.value;
+
+
+        // Limpiar mensaje
+
+        mensaje.textContent = "";
+
+        mensaje.style.color = "#d32f2f";
+
+
+        // ==========================================
+        // VALIDAR CAMPOS
+        // ==========================================
+
+        if (
+            !nombre ||
+            !apellido ||
+            !correo ||
+            !telefono ||
+            !tarjetaProfesional ||
+            !contraseñaValor ||
+            !confirmarValor
+        ) {
+
+            mensaje.textContent =
+                "Completa todos los campos.";
+
+            return;
+        }
+
+
+        // ==========================================
+        // VALIDAR CONTRASEÑAS
+        // ==========================================
+
+        if (contraseñaValor !== confirmarValor) {
+
+            mensaje.textContent =
+                "Las contraseñas no coinciden.";
+
+            return;
+        }
+
+
+        // ==========================================
+        // DESACTIVAR BOTÓN
+        // ==========================================
+
+        btnRegistrar.disabled = true;
+
+        btnRegistrar.textContent =
+            "Creando cuenta...";
+
+
+        // ==========================================
+        // DATOS
+        // ==========================================
+
+        const datosNutricionista = {
+
+            nombre,
+
+            apellido,
+
+            correo,
+
+            telefono,
+
+            tarjetaProfesional,
+
+            contraseña: contraseñaValor
+
+        };
+
+
+        try {
+
+            const respuesta = await fetch(
+                "http://172.29.80.73:3000/auth/register",
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+
+                    body: JSON.stringify(
+                        datosNutricionista
+                    )
+                }
+            );
+
+
+            const datos = await respuesta.json();
+
+
+            // ==========================================
+            // REGISTRO CORRECTO
+            // ==========================================
+
+            if (respuesta.ok) {
+
+                mensaje.style.color = "#0288d1";
+
+                mensaje.textContent =
+                    datos.mensaje ||
+                    "Cuenta creada correctamente.";
+
+
+                setTimeout(() => {
+
+                    window.location.href =
+                        "login-doc.html";
+
+                }, 1000);
+
+
+            } else {
+
+                mensaje.textContent =
+                    datos.mensaje ||
+                    "No se pudo crear la cuenta.";
+
+                btnRegistrar.disabled = false;
+
+                btnRegistrar.textContent =
+                    "Crear cuenta";
+
+            }
+
+
+        } catch (error) {
+
+            console.error("Error:", error);
+
+            mensaje.textContent =
+                "No se pudo conectar con el servidor.";
+
+            btnRegistrar.disabled = false;
+
+            btnRegistrar.textContent =
+                "Crear cuenta";
+
+        }
+
+    });
+
+</script>
 
 </body>
 </html>

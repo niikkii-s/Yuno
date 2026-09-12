@@ -29,7 +29,7 @@
                 <li><a href="#contacto">Contacto</a></li>
             </ul>
 
-            <a href="login.html" class="btn-login">Iniciar sesión</a>
+            <a href="elegir.html" class="btn-login">Iniciar sesión</a>
         </div>
     </nav>
 
@@ -233,6 +233,162 @@
     </form>
 
 </section>
+
+<script>
+
+    // ==========================================
+    // 1. CAMBIAR LA NAVBAR AL HACER SCROLL
+    // ==========================================
+
+    const navbar = document.querySelector(".navbar");
+
+    window.addEventListener("scroll", () => {
+
+        if (window.scrollY > 50) {
+            navbar.classList.add("scroll");
+        } else {
+            navbar.classList.remove("scroll");
+        }
+
+    });
+
+
+    // ==========================================
+    // 2. ANIMACIÓN DE LAS TARJETAS
+    // ==========================================
+
+    const elementos = document.querySelectorAll(
+        ".card, .plan-card, .nosotros-container, .contacto h2, .contacto p, .formulario"
+    );
+
+    const observador = new IntersectionObserver((entradas) => {
+
+        entradas.forEach((entrada) => {
+
+            if (entrada.isIntersecting) {
+                entrada.target.classList.add("mostrar");
+            }
+
+        });
+
+    }, {
+        threshold: 0.15
+    });
+
+    elementos.forEach((elemento) => {
+        observador.observe(elemento);
+    });
+
+
+    // ==========================================
+    // 3. FORMULARIO DE CONTACTO
+    // ==========================================
+
+    const formulario = document.querySelector(".formulario");
+
+    formulario.addEventListener("submit", (evento) => {
+
+        evento.preventDefault();
+
+        const nombre = formulario
+            .querySelector('input[type="text"]')
+            .value
+            .trim();
+
+        const correo = formulario
+            .querySelector('input[type="email"]')
+            .value
+            .trim();
+
+        const mensaje = formulario
+            .querySelector("textarea")
+            .value
+            .trim();
+
+
+        // Comprobar campos vacíos
+
+        if (nombre === "" || correo === "" || mensaje === "") {
+
+            alert("Por favor, completa todos los campos.");
+
+            return;
+        }
+
+
+        // Comprobar correo
+
+        const formatoCorreo =
+            /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!formatoCorreo.test(correo)) {
+
+            alert("Por favor, introduce un correo válido.");
+
+            return;
+        }
+
+
+        // Mensaje de confirmación
+
+        alert(
+            "¡Mensaje enviado correctamente, " +
+            nombre +
+            "! Nos pondremos en contacto contigo."
+        );
+
+
+        // Limpiar formulario
+
+        formulario.reset();
+
+    });
+
+
+    // ==========================================
+    // 4. BOTÓN VOLVER ARRIBA
+    // ==========================================
+
+    const botonInicio = document.createElement("button");
+
+    botonInicio.textContent = "↑";
+
+    botonInicio.id = "topBtn";
+
+    botonInicio.title = "Volver al inicio";
+
+    document.body.appendChild(botonInicio);
+
+
+    // Mostrar / ocultar botón
+
+    window.addEventListener("scroll", () => {
+
+        if (window.scrollY > 300) {
+
+            botonInicio.classList.add("mostrar");
+
+        } else {
+
+            botonInicio.classList.remove("mostrar");
+
+        }
+
+    });
+
+
+    // Volver arriba
+
+    botonInicio.addEventListener("click", () => {
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    });
+
+</script>
 
 </body>
 </html>
