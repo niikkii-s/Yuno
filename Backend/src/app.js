@@ -1,31 +1,43 @@
 const express = require("express");
+const cors = require("cors");
 require("./config/db");
 
 const app = express();
 
-// Middleware para leer JSON
+app.use(cors());
 app.use(express.json());
 
-// Importar rutas
+// Rutas
 const authRoutes = require("./routes/authRoutes");
-const alimentosRoutes = require("./routes/alimentosRoutes");
-const registrosRoutes = require("./routes/registrosRoutes");
-const usuariosRoutes = require("./routes/usuariosRoutes");
+console.log("1. auth cargado");
 
-// Registrar rutas
+const alimentosRoutes = require("./routes/alimentosRoutes");
+console.log("2. alimentos cargado");
+
+const registrosRoutes = require("./routes/registrosRoutes");
+console.log("3. registros cargado");
+
+const usuariosRoutes = require("./routes/usuariosRoutes");
+console.log("4. usuarios cargado");
+
+const retosRoutes = require("./routes/retosRoutes");
+console.log("5. retos cargado");
+
+// Conectar rutas
 app.use("/auth", authRoutes);
 app.use("/alimentos", alimentosRoutes);
 app.use("/registros", registrosRoutes);
 app.use("/usuarios", usuariosRoutes);
+app.use("/retos", retosRoutes);
 
 // Ruta principal
 app.get("/", (req, res) => {
-  res.send("Servidor funcionando");
+    res.send("Servidor funcionando");
 });
 
-// Iniciar servidor
+// Puerto
 const PORT = 3000;
 
-app.listen(PORT, () => {
-  console.log(`Servidor corriendo en puerto ${PORT}`);
+app.listen(PORT, "0.0.0.0", () => {
+    console.log(`Servidor corriendo en puerto ${PORT}`);
 });
