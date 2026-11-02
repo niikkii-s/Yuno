@@ -7,7 +7,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Rutas
 const authRoutes = require("./routes/authRoutes");
 console.log("1. auth cargado");
 
@@ -20,22 +19,15 @@ console.log("3. registros cargado");
 const usuariosRoutes = require("./routes/usuariosRoutes");
 console.log("4. usuarios cargado");
 
-const retosRoutes = require("./routes/retosRoutes");
-console.log("5. retos cargado");
-
-// Conectar rutas
 app.use("/auth", authRoutes);
 app.use("/alimentos", alimentosRoutes);
 app.use("/registros", registrosRoutes);
 app.use("/usuarios", usuariosRoutes);
-app.use("/retos", retosRoutes);
 
-// Ruta principal
 app.get("/", (req, res) => {
     res.send("Servidor funcionando");
 });
 
-// Puerto
 const PORT = 3000;
 
 app.listen(PORT, "0.0.0.0", () => {

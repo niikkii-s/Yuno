@@ -1,17 +1,23 @@
 const db = require("../config/db");
 
-// Calcular edad a partir de la fecha de nacimiento
 const calcularEdad = (fechaNacimiento) => {
+  if (!fechaNacimiento) return null;
+
+  const fecha = fechaNacimiento instanceof Date
+    ? fechaNacimiento.toISOString().slice(0, 10)
+    : String(fechaNacimiento).slice(0, 10);
+
+  const [anio, mes, dia] = fecha.split("-").map(Number);
+
+  if (!anio || !mes || !dia) return null;
+
   const hoy = new Date();
-  const nacimiento = new Date(fechaNacimiento);
 
-  let edad = hoy.getFullYear() - nacimiento.getFullYear();
-
-  const mes = hoy.getMonth() - nacimiento.getMonth();
+  let edad = hoy.getFullYear() - anio;
 
   if (
-    mes < 0 ||
-    (mes === 0 && hoy.getDate() < nacimiento.getDate())
+    hoy.getMonth() + 1 < mes ||
+    (hoy.getMonth() + 1 === mes && hoy.getDate() < dia)
   ) {
     edad--;
   }
@@ -19,9 +25,14 @@ const calcularEdad = (fechaNacimiento) => {
   return edad;
 };
 
-// Obtener un usuario por ID
 const getUsuario = (req, res) => {
-  const { id } = req.params;
+  const id = Number(req.params.id);
+
+  if (!Number.isInteger(id) || id <= 0) {
+    return res.status(400).json({
+      mensaje: "El ID del usuario no es válido"
+    });
+  }
 
   const sql = `
     SELECT
@@ -32,7 +43,7 @@ const getUsuario = (req, res) => {
       peso,
       altura,
       objetivo,
-      hojas
+      restriccion_dieta
     FROM usuarios
     WHERE id = ?
   `;
@@ -54,12 +65,10 @@ const getUsuario = (req, res) => {
 
     const usuario = results[0];
 
-    // Calcular edad automáticamente
-    if (usuario.fecha_nacimiento) {
-      usuario.edad = calcularEdad(usuario.fecha_nacimiento);
-    }
-
-    res.json(usuario);
+    return res.json({
+      ...usuario,
+      edad: calcularEdad(usuario.fecha_nacimiento)
+    });
   });
 };
 
