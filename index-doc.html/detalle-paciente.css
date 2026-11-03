@@ -7,7 +7,6 @@
 
 body {
     background: #eef7fc;
-    overflow-x: hidden;
 }
 
 
@@ -23,21 +22,15 @@ body {
 
 .sidebar {
     width: 300px;
-
     background: #03a9f4;
     color: white;
-
     display: flex;
     flex-direction: column;
-
     padding: 35px 30px;
-
     position: fixed;
-
     left: 0;
     top: 0;
     bottom: 0;
-
     z-index: 10;
 }
 
@@ -46,15 +39,10 @@ body {
 
 .logo a {
     font-family: "Pacifico", cursive;
-
     font-size: 40px;
-
     color: white;
-
     text-decoration: none;
-
     display: inline-block;
-
     transition: 0.3s;
 }
 
@@ -67,16 +55,13 @@ body {
 
 .sidebar nav {
     flex: 1;
-
     display: flex;
     align-items: center;
 }
 
 .sidebar ul {
     list-style: none;
-
     width: 100%;
-
     margin: 0;
     padding: 0;
 }
@@ -89,28 +74,16 @@ body {
     margin-bottom: 0;
 }
 
-
-/* BOTONES DEL MENÚ */
-
 .sidebar ul li a {
     display: block;
-
     width: 100%;
-
     background: #0288d1;
-
     color: white;
-
     text-decoration: none;
-
     font-size: 20px;
-
     padding: 18px 20px;
-
     border-radius: 15px;
-
     text-align: left;
-
     transition: 0.3s;
 }
 
@@ -124,23 +97,14 @@ body {
 
 .configuracion {
     display: block;
-
     width: 100%;
-
     background: #0288d1;
-
     color: white;
-
     text-decoration: none;
-
     font-size: 18px;
-
     padding: 16px 20px;
-
     border-radius: 15px;
-
     text-align: left;
-
     transition: 0.3s;
 }
 
@@ -154,20 +118,12 @@ body {
 
 .contenido {
     flex: 1;
-
     width: calc(100% - 300px);
-
     min-width: 0;
-
     margin-left: 300px;
-
     padding: 40px;
-
     background: #eef7fc;
-
     min-height: 100vh;
-
-    overflow-x: hidden;
     overflow-y: auto;
 }
 
@@ -180,15 +136,12 @@ body {
 
 .cabecera h2 {
     color: #01579b;
-
     font-size: 38px;
-
     margin-bottom: 10px;
 }
 
 .cabecera p {
     color: #666;
-
     font-size: 18px;
 }
 
@@ -197,37 +150,22 @@ body {
 
 .cards {
     display: grid;
-
-    grid-template-columns:
-        repeat(2, minmax(0, 1fr));
-
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 30px;
-
     width: 100%;
-
     max-width: 1100px;
-
     min-width: 0;
-
     margin-bottom: 40px;
 }
 
 .card {
     width: 100%;
-
     min-width: 0;
-
     background: white;
-
     border-radius: 20px;
-
     padding: 30px;
-
-    box-shadow:
-        0 5px 18px rgba(0, 0, 0, 0.08);
-
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
     transition: 0.3s;
-
     overflow: hidden;
 }
 
@@ -236,22 +174,25 @@ body {
 }
 
 
-/* ICONO */
+/* ================= ICONO ================= */
 
 .icon {
-    font-size: 45px;
-
     margin-bottom: 15px;
 }
 
+.icon img {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+    display: block;
+}
 
-/* TÍTULO */
+
+/* ================= TÍTULO ================= */
 
 .card h3 {
     color: #01579b;
-
     margin-bottom: 20px;
-
     font-size: 24px;
 }
 
@@ -260,41 +201,27 @@ body {
 
 .dato {
     display: flex;
-
     justify-content: space-between;
-
     align-items: center;
-
     gap: 20px;
-
     width: 100%;
-
     min-width: 0;
-
     padding: 12px 0;
-
     border-bottom: 1px solid #eee;
 }
 
 .dato span {
     color: #666;
-
     font-size: 15px;
 }
 
 .dato strong {
     color: #333;
-
     font-size: 15px;
-
     text-align: right;
-
     min-width: 0;
-
     max-width: 60%;
-
     overflow-wrap: anywhere;
-
     word-break: break-word;
 }
 
@@ -303,24 +230,16 @@ body {
 
 .seguimiento {
     width: 100%;
-
     max-width: 1100px;
-
     background: white;
-
     border-radius: 20px;
-
     padding: 30px;
-
-    box-shadow:
-        0 5px 18px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
 }
 
 .seguimiento h3 {
     color: #01579b;
-
     margin-bottom: 25px;
-
     font-size: 28px;
 }
 
@@ -329,23 +248,16 @@ body {
 
 .barra {
     width: 100%;
-
     height: 20px;
-
     background: #d9eef9;
-
     border-radius: 30px;
-
     margin-top: 25px;
-
     overflow: hidden;
 }
 
 .progreso {
     width: 0%;
-
     height: 100%;
-
     background: #03a9f4;
 }
 
@@ -354,21 +266,13 @@ body {
 
 .btn-chat {
     display: inline-block;
-
     margin-top: 35px;
-
     background: #0288d1;
-
     color: white;
-
     text-decoration: none;
-
     padding: 16px 35px;
-
     border-radius: 35px;
-
     font-size: 18px;
-
     transition: 0.3s;
 }
 
@@ -385,48 +289,38 @@ body {
 
 ::-webkit-scrollbar-thumb {
     background: #b3e5fc;
-
     border-radius: 10px;
 }
 
 
-/* ================= RESPONSIVE ================= */
+/* ================= TABLET ================= */
 
 @media (max-width: 1100px) {
 
     .cards {
         grid-template-columns: 1fr;
     }
-
 }
 
+
+/* ================= PANTALLAS MEDIANAS ================= */
 
 @media (max-width: 900px) {
 
     .sidebar {
         width: 240px;
-
         padding: 30px 22px;
     }
 
     .contenido {
         width: calc(100% - 240px);
-
         margin-left: 240px;
-
         padding: 30px;
     }
-
-    .cards {
-        width: 100%;
-    }
-
-    .seguimiento {
-        width: 100%;
-    }
-
 }
 
+
+/* ================= CELULAR ================= */
 
 @media (max-width: 650px) {
 
@@ -436,22 +330,14 @@ body {
 
     .sidebar {
         position: relative;
-
         width: 100%;
-
         min-height: auto;
-
         padding: 25px 20px;
     }
 
     .sidebar nav {
         display: block;
-
         margin-top: 25px;
-    }
-
-    .sidebar ul {
-        width: 100%;
     }
 
     .sidebar li {
@@ -464,9 +350,7 @@ body {
 
     .contenido {
         width: 100%;
-
         margin-left: 0;
-
         padding: 25px 20px;
     }
 
@@ -480,7 +364,6 @@ body {
 
     .cards {
         grid-template-columns: 1fr;
-
         gap: 20px;
     }
 
@@ -490,15 +373,12 @@ body {
 
     .dato {
         flex-direction: column;
-
         align-items: flex-start;
-
         gap: 6px;
     }
 
     .dato strong {
         max-width: 100%;
-
         text-align: left;
     }
 
@@ -508,8 +388,6 @@ body {
 
     .btn-chat {
         width: 100%;
-
         text-align: center;
     }
-
 }

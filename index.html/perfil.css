@@ -210,9 +210,13 @@ body {
 /* ICONOS */
 
 .icon {
-    font-size: 42px;
-
     margin-bottom: 15px;
+}
+
+.icon img {
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
 }
 
 
@@ -295,11 +299,15 @@ body {
 /* ICONO DE LAS SECCIONES */
 
 .seccion-icon {
-    font-size: 42px;
-
     min-width: 55px;
 
     height: 55px;
+}
+
+.seccion-icon img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
 }
 
 
@@ -512,13 +520,5 @@ body {
         margin-left: 0;
 
         padding: 25px;
-    }
-
-    .cards {
-        grid-template-columns: 1fr;
-    }
-
-    .card {
-        min-width: 0;
     }
 }

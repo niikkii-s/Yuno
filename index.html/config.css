@@ -178,8 +178,16 @@ body {
 ========================================= */
 
 .icon {
-    font-size: 42px;
+    width: 55px;
+    height: 55px;
     margin-bottom: 15px;
+}
+
+.icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
 }
 
 

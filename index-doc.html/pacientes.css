@@ -7,13 +7,13 @@
 
 body {
     background: #eef7fc;
-    overflow-x: hidden;
 }
 
 .container {
     display: flex;
     min-height: 100vh;
 }
+
 
 /* =========================
    SIDEBAR
@@ -33,6 +33,11 @@ body {
     z-index: 10;
 }
 
+
+/* =========================
+   LOGO
+========================= */
+
 .logo a {
     font-family: "Pacifico", cursive;
     font-size: 40px;
@@ -45,6 +50,7 @@ body {
 .logo a:hover {
     color: #dff6ff;
 }
+
 
 /* =========================
    MENÚ
@@ -89,8 +95,9 @@ body {
     background: #01579b;
 }
 
+
 /* =========================
-   CONFIGURACIÓN ABAJO
+   CONFIGURACIÓN
 ========================= */
 
 .configuracion {
@@ -111,6 +118,7 @@ body {
     background: #01579b;
 }
 
+
 /* =========================
    CONTENIDO
 ========================= */
@@ -123,16 +131,16 @@ body {
     background: #eef7fc;
     padding: 40px;
     min-height: 100vh;
-    overflow-x: hidden;
     overflow-y: auto;
 }
+
 
 /* =========================
    CABECERA
 ========================= */
 
 .cabecera {
-    margin-bottom: 35px;
+    margin-bottom: 40px;
 }
 
 .cabecera h2 {
@@ -144,255 +152,132 @@ body {
 .cabecera p {
     color: #666;
     font-size: 18px;
+    line-height: 1.5;
 }
+
 
 /* =========================
    GRID
 ========================= */
 
-.configuracion-grid {
+.pacientes-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 30px;
     width: 100%;
     max-width: 1100px;
     min-width: 0;
 }
 
+
 /* =========================
    TARJETAS
 ========================= */
 
-.card {
+.card-paciente {
     width: 100%;
     min-width: 0;
     background: white;
     padding: 30px;
     border-radius: 18px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
     transition: 0.3s;
+    text-align: center;
     overflow: hidden;
 }
 
-.card:hover {
-    transform: translateY(-4px);
+.card-paciente:hover {
+    transform: translateY(-6px);
 }
+
+
+/* =========================
+   ICONO
+========================= */
 
 .icon {
-    font-size: 42px;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
-.card h3 {
+.icon img {
+    width: 55px;
+    height: 55px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+}
+
+
+/* =========================
+   TÍTULO
+========================= */
+
+.card-paciente h3 {
     color: #01579b;
     font-size: 24px;
     margin-bottom: 10px;
 }
 
-.descripcion {
+
+/* =========================
+   PLAN
+========================= */
+
+.card-paciente p {
     color: #666;
-    line-height: 1.5;
+    margin-bottom: 18px;
+    font-size: 17px;
+}
+
+
+/* =========================
+   ESTADOS
+========================= */
+
+.estado {
+    display: inline-block;
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 15px;
+    font-weight: bold;
     margin-bottom: 25px;
 }
 
-/* =========================
-   DATOS
-========================= */
-
-.dato {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-    width: 100%;
-    min-width: 0;
-    padding: 15px 0;
-    border-bottom: 1px solid #eee;
+.estado.activo {
+    background: #d8f5d2;
+    color: #2e7d32;
 }
 
-.dato:last-child {
-    border-bottom: none;
+.estado.inactivo {
+    background: #ffe0e0;
+    color: #c62828;
 }
 
-.dato span {
-    color: #666;
-    font-size: 15px;
-    flex-shrink: 0;
-}
-
-.dato strong {
-    color: #01579b;
-    font-size: 15px;
-    text-align: right;
-    min-width: 0;
-    max-width: 60%;
-    overflow-wrap: anywhere;
-    word-break: break-word;
-}
 
 /* =========================
-   CAMPOS
-========================= */
-
-.campo {
-    margin-bottom: 16px;
-}
-
-.campo label {
-    display: block;
-    color: #555;
-    font-size: 15px;
-    margin-bottom: 7px;
-}
-
-.campo input {
-    width: 100%;
-    max-width: 100%;
-    padding: 12px 14px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    outline: none;
-    font-size: 15px;
-}
-
-.campo input:focus {
-    border-color: #03a9f4;
-}
-
-/* =========================
-   BOTONES
+   BOTÓN
 ========================= */
 
 .btn {
     display: block;
     width: 100%;
-    margin-top: 25px;
-    padding: 13px;
-    border: none;
-    border-radius: 25px;
-    background: #03a9f4;
+    background: #0288d1;
     color: white;
-    font-size: 16px;
-    font-weight: bold;
-    text-align: center;
     text-decoration: none;
-    cursor: pointer;
+    padding: 14px;
+    border-radius: 30px;
     transition: 0.3s;
+    font-size: 17px;
+    text-align: center;
 }
 
 .btn:hover {
-    background: #0288d1;
+    background: #01579b;
 }
+
 
 /* =========================
-   PREFERENCIAS
-========================= */
-
-.preferencia {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-    width: 100%;
-    min-width: 0;
-    padding: 16px 0;
-    border-bottom: 1px solid #eee;
-}
-
-.preferencia div {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    min-width: 0;
-}
-
-.preferencia strong {
-    color: #444;
-    font-size: 16px;
-}
-
-.preferencia span {
-    color: #777;
-    font-size: 14px;
-}
-
-.preferencia select {
-    padding: 9px 12px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    background: white;
-    color: #555;
-    outline: none;
-    cursor: pointer;
-    max-width: 180px;
-}
-
-/* =========================
-   CONTRASEÑA
-========================= */
-
-.contrasena-contenedor {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 10px;
-    min-width: 0;
-}
-
-.btn-mostrar {
-    flex-shrink: 0;
-    background: none;
-    border: none;
-    color: #03a9f4;
-    font-size: 14px;
-    font-weight: bold;
-    cursor: pointer;
-    padding: 0;
-}
-
-.btn-mostrar:hover {
-    color: #01579b;
-}
-
-/* =========================
-   RECUPERAR CONTRASEÑA
-========================= */
-
-.olvidaste {
-    display: block;
-    margin-top: 18px;
-    text-align: center;
-    color: #01579b;
-    font-size: 14px;
-    text-decoration: underline;
-    cursor: pointer;
-}
-
-.olvidaste:hover {
-    color: #03a9f4;
-}
-
-/* =========================
-   CUENTA
-========================= */
-
-.cuenta {
-    border-top: 4px solid #03a9f4;
-}
-
-.desactivar {
-    background: white;
-    color: #d32f2f;
-    border: 1px solid #d32f2f;
-}
-
-.desactivar:hover {
-    background: #ffebee;
-    color: #c62828;
-}
-
-/* =========================
-   SCROLLBAR
+   SCROLL
 ========================= */
 
 ::-webkit-scrollbar {
@@ -408,24 +293,22 @@ body {
     background: transparent;
 }
 
+
 /* =========================
-   TABLET
+   PANTALLAS MEDIANAS
 ========================= */
 
 @media (max-width: 1100px) {
 
-    .contenido {
-        padding: 30px;
-    }
-
-    .configuracion-grid {
-        grid-template-columns: 1fr;
-        max-width: 800px;
+    .pacientes-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        max-width: 900px;
     }
 }
 
+
 /* =========================
-   PANTALLAS MEDIANAS
+   TABLET
 ========================= */
 
 @media (max-width: 900px) {
@@ -441,23 +324,17 @@ body {
         padding: 30px;
     }
 
-    .configuracion-grid {
-        grid-template-columns: 1fr;
-        width: 100%;
-    }
-
     .sidebar ul li a {
         font-size: 18px;
         padding: 16px;
-        text-align: left;
     }
 
     .configuracion {
         font-size: 17px;
         padding: 15px;
-        text-align: left;
     }
 }
+
 
 /* =========================
    CELULAR
@@ -481,10 +358,6 @@ body {
         margin-top: 25px;
     }
 
-    .sidebar ul {
-        width: 100%;
-    }
-
     .sidebar li {
         margin-bottom: 12px;
     }
@@ -499,6 +372,10 @@ body {
         padding: 25px 20px;
     }
 
+    .cabecera {
+        margin-bottom: 30px;
+    }
+
     .cabecera h2 {
         font-size: 30px;
     }
@@ -507,37 +384,12 @@ body {
         font-size: 16px;
     }
 
-    .configuracion-grid {
+    .pacientes-grid {
         grid-template-columns: 1fr;
         gap: 20px;
     }
 
-    .card {
+    .card-paciente {
         padding: 24px;
-    }
-
-    .dato {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 6px;
-    }
-
-    .dato strong {
-        max-width: 100%;
-        text-align: left;
-    }
-
-    .contrasena-contenedor {
-        justify-content: flex-start;
-    }
-
-    .preferencia {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .preferencia select {
-        width: 100%;
-        max-width: 100%;
     }
 }

@@ -13,12 +13,6 @@ html {
     scroll-behavior: smooth;
 }
 
-.pacifico-regular {
-    font-family: "Pacifico", cursive;
-    font-weight: 400;
-    font-style: normal;
-}
-
 
 /* ==============================
    HERO
@@ -146,18 +140,12 @@ html {
     padding: 0 20px;
 }
 
-
-/* TITULO */
-
 .hero-content h1 {
     font-size: 52px;
     max-width: 900px;
     line-height: 1.2;
     margin-bottom: 20px;
 }
-
-
-/* TEXTO */
 
 .hero-content p {
     font-size: 20px;
@@ -166,9 +154,6 @@ html {
     color: #e5e5e5;
 }
 
-
-/* BOTON PRINCIPAL */
-
 .btn-main {
     background: #039be5;
     padding: 14px 40px;
@@ -176,15 +161,6 @@ html {
     text-decoration: none;
     color: white;
     font-size: 20px;
-}
-
-
-/* ==============================
-   SECCIONES
-================================= */
-
-.seccion {
-    height: 100vh;
 }
 
 
@@ -199,17 +175,11 @@ html {
     text-align: center;
 }
 
-
-/* TITULO */
-
 .servicios h2 {
     font-size: 42px;
     margin-bottom: 50px;
     color: #0277bd;
 }
-
-
-/* CONTENEDOR */
 
 .servicios-container {
     display: flex;
@@ -228,21 +198,26 @@ html {
     width: 300px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     transition: 0.3s;
+    text-align: left;
 }
-
-
-/* HOVER */
 
 .card:hover {
     transform: translateY(-10px);
 }
 
 
-/* ICONO */
+/* IMAGEN DEL SERVICIO */
 
 .icon {
-    font-size: 40px;
     margin-bottom: 15px;
+    text-align: left;
+}
+
+.icon img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    display: block;
 }
 
 
@@ -254,7 +229,7 @@ html {
 }
 
 
-/* TEXTO */
+/* TEXTO CARD */
 
 .card p {
     color: #666;
@@ -273,17 +248,11 @@ html {
     text-align: center;
 }
 
-
-/* TITULO */
-
 .planes h2 {
     font-size: 42px;
     margin-bottom: 50px;
     color: #356b82;
 }
-
-
-/* CONTENEDOR */
 
 .planes-container {
     display: flex;
@@ -305,19 +274,22 @@ html {
     transition: 0.3s;
 }
 
-
-/* HOVER */
-
 .plan-card:hover {
     transform: translateY(-10px);
 }
 
 
-/* ICONO */
+/* IMAGEN DEL PLAN */
 
 .plan-icon {
-    font-size: 42px;
     margin-bottom: 20px;
+}
+
+.plan-icon img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    display: block;
 }
 
 
@@ -345,9 +317,6 @@ html {
     padding-left: 20px;
 }
 
-
-/* ITEMS */
-
 .plan-card li {
     margin-bottom: 10px;
     color: #444;
@@ -368,9 +337,6 @@ html {
     padding: 60px 20px;
 }
 
-
-/* CONTENEDOR */
-
 .nosotros-container {
     display: flex;
     align-items: center;
@@ -379,9 +345,6 @@ html {
     max-width: 1100px;
     width: 100%;
 }
-
-
-/* TEXTO */
 
 .nosotros-texto {
     flex: 1;
@@ -398,9 +361,6 @@ html {
     color: #444;
     line-height: 1.6;
 }
-
-
-/* IMAGEN */
 
 .nosotros-img {
     flex: 1;
@@ -428,26 +388,17 @@ html {
     padding: 60px 20px;
 }
 
-
-/* TITULO */
-
 .contacto h2 {
     font-size: 40px;
     margin-bottom: 10px;
     color: #333;
 }
 
-
-/* TEXTO */
-
 .contacto p {
     margin-bottom: 40px;
     color: #666;
     max-width: 500px;
 }
-
-
-/* FORMULARIO */
 
 .formulario {
     background: white;

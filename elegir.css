@@ -17,11 +17,15 @@ body{
     text-align:center;
 }
 
-.logo{
-    font-family:"Pacifico", cursive;
-    font-size:55px;
-    color:#7cb342;
-    margin-bottom:20px;
+.logo {
+    font-size: 55px;
+    margin-bottom: 20px;
+}
+
+.logo a {
+    font-family: "Pacifico", cursive;
+    color: #7cb342;
+    text-decoration: none;
 }
 
 h2{
@@ -58,9 +62,14 @@ h2{
     transform:translateY(-10px);
 }
 
-.icono{
-    font-size:70px;
-    margin-bottom:20px;
+.icono {
+    margin-bottom: 15px;
+}
+
+.icono img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
 }
 
 .card h3{
@@ -82,9 +91,6 @@ h2{
     color:#689f38;
 }
 
-.cliente:hover{
-    box-shadow:0 15px 35px rgba(124,179,66,.35);
-}
 
 /* NUTRICIONISTA */
 
@@ -94,8 +100,4 @@ h2{
 
 .nutricionista h3{
     color:#01579b;
-}
-
-.nutricionista:hover{
-    box-shadow:0 15px 35px rgba(2,136,209,.35);
 }

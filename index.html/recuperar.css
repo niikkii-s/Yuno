@@ -51,7 +51,7 @@ body {
 ========================================= */
 
 .logo {
-    margin-bottom: 30px;
+    margin-bottom: 15px;
 }
 
 .logo a {
@@ -70,8 +70,13 @@ body {
 ========================================= */
 
 .icono {
-    font-size: 50px;
     margin-bottom: 15px;
+}
+
+.icono img {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
 }
 
 

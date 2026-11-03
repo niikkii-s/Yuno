@@ -13,12 +13,6 @@ html {
     scroll-behavior: smooth;
 }
 
-.pacifico-regular {
-    font-family: "Pacifico", cursive;
-    font-weight: 400;
-    font-style: normal;
-}
-
 
 /* ==============================
    HERO
@@ -180,15 +174,6 @@ html {
 
 
 /* ==============================
-   SECCIONES
-================================= */
-
-.seccion {
-    height: 100vh;
-}
-
-
-/* ==============================
    SERVICIOS
 ================================= */
 
@@ -228,6 +213,7 @@ html {
     width: 300px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     transition: 0.3s;
+    text-align: left;
 }
 
 
@@ -241,8 +227,16 @@ html {
 /* ICONO */
 
 .icon {
-    font-size: 40px;
     margin-bottom: 15px;
+}
+
+
+/* IMAGEN DEL ICONO */
+
+.icon img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
 }
 
 
@@ -316,8 +310,16 @@ html {
 /* ICONO */
 
 .plan-icon {
-    font-size: 42px;
     margin-bottom: 20px;
+}
+
+
+/* IMAGEN DEL ICONO */
+
+.plan-icon img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
 }
 
 
@@ -557,3 +559,34 @@ textarea {
     background: #689f38;
     transform: translateY(-3px);
 }
+
+
+/* ==============================
+   ACCESIBILIDAD
+================================= */
+
+/* Etiquetas disponibles para lectores de pantalla */
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+
+/* Indicador visible al navegar con teclado */
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid #ff9800;
+    outline-offset: 3px;
+}
+

@@ -7,7 +7,6 @@
 
 body {
     background: #eef7fc;
-    overflow-x: hidden;
 }
 
 
@@ -25,17 +24,13 @@ body {
     width: 300px;
     background: #03a9f4;
     color: white;
-
     display: flex;
     flex-direction: column;
-
     padding: 35px 30px;
-
     position: fixed;
     left: 0;
     top: 0;
     bottom: 0;
-
     z-index: 10;
 }
 
@@ -46,10 +41,8 @@ body {
     font-family: "Pacifico", cursive;
     font-size: 40px;
     color: white;
-
     text-decoration: none;
     display: inline-block;
-
     transition: 0.3s;
 }
 
@@ -62,16 +55,13 @@ body {
 
 .sidebar nav {
     flex: 1;
-
     display: flex;
     align-items: center;
 }
 
 .sidebar ul {
     list-style: none;
-
     width: 100%;
-
     margin: 0;
     padding: 0;
 }
@@ -84,27 +74,16 @@ body {
     margin-bottom: 0;
 }
 
-
-/* ENLACES DEL MENÚ */
-
 .sidebar ul li a {
     display: block;
-
     width: 100%;
-
     background: #0288d1;
     color: white;
-
     text-decoration: none;
-
     font-size: 20px;
-
     padding: 18px 20px;
-
     border-radius: 15px;
-
     text-align: left;
-
     transition: 0.3s;
 }
 
@@ -118,22 +97,14 @@ body {
 
 .configuracion {
     display: block;
-
     width: 100%;
-
     background: #0288d1;
     color: white;
-
     text-decoration: none;
-
     font-size: 18px;
-
     padding: 16px 20px;
-
     border-radius: 15px;
-
     text-align: left;
-
     transition: 0.3s;
 }
 
@@ -147,14 +118,10 @@ body {
 
 .chat {
     display: flex;
-
     width: calc(100% - 300px);
     min-width: 0;
-
     margin-left: 300px;
-
     min-height: 100vh;
-
     background: white;
 }
 
@@ -163,41 +130,28 @@ body {
 
 .pacientes {
     width: 300px;
-    min-width: 0;
-
     border-right: 1px solid #ddd;
-
     background: #f8fbfd;
-
     padding: 30px;
-
     overflow-y: auto;
 }
 
 .pacientes h2 {
     color: #01579b;
-
     margin-bottom: 30px;
-
     font-size: 28px;
 }
 
 
-/* PACIENTE */
+/* ================= PACIENTE ================= */
 
 .paciente {
     background: white;
-
     padding: 18px;
-
     margin-bottom: 15px;
-
     border-radius: 15px;
-
     cursor: pointer;
-
     transition: 0.3s;
-
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
 }
 
@@ -215,9 +169,7 @@ body {
 
 .conversacion {
     flex: 1;
-
     min-width: 0;
-
     display: flex;
     flex-direction: column;
 }
@@ -227,25 +179,16 @@ body {
 
 .cabecera-chat {
     height: 90px;
-
     padding: 20px 35px;
-
     border-bottom: 1px solid #ddd;
-
     display: flex;
     align-items: center;
-
     flex-shrink: 0;
 }
 
 .cabecera-chat h2 {
     color: #01579b;
-
     margin-bottom: 5px;
-}
-
-.cabecera-chat p {
-    color: #777;
 }
 
 
@@ -253,13 +196,9 @@ body {
 
 .mensajes {
     flex: 1;
-
     min-height: 0;
-
     background: #eef7fc;
-
     padding: 30px;
-
     overflow-y: auto;
 }
 
@@ -268,31 +207,20 @@ body {
 
 .enviar {
     display: flex;
-
     gap: 15px;
-
     padding: 20px 30px;
-
     border-top: 1px solid #ddd;
-
     background: white;
-
     flex-shrink: 0;
 }
 
 .enviar input {
     flex: 1;
-
     min-width: 0;
-
     padding: 15px 20px;
-
     border: 1px solid #ccc;
-
     border-radius: 30px;
-
     outline: none;
-
     font-size: 16px;
 }
 
@@ -302,18 +230,12 @@ body {
 
 .enviar button {
     border: none;
-
     background: #0288d1;
     color: white;
-
     padding: 15px 35px;
-
     border-radius: 30px;
-
     cursor: pointer;
-
     font-size: 16px;
-
     transition: 0.3s;
 }
 
@@ -326,60 +248,43 @@ body {
 
 .mensaje {
     max-width: 65%;
-
     padding: 12px 18px;
-
     margin-bottom: 15px;
-
     border-radius: 18px;
-
     line-height: 1.5;
-
     font-size: 16px;
-
     overflow-wrap: anywhere;
 }
 
 
-/* MENSAJES DEL PACIENTE */
+/* ================= MENSAJE PACIENTE ================= */
 
 .mensaje.paciente {
     background: white;
-
     color: #444;
-
     margin-right: auto;
-
     border-bottom-left-radius: 5px;
-
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 
-/* MENSAJES DEL NUTRICIONISTA */
+/* ================= MENSAJE NUTRICIONISTA ================= */
 
 .mensaje.nutricionista {
     background: #03a9f4;
-
     color: white;
-
     margin-left: auto;
-
     border-bottom-right-radius: 5px;
 }
 
 
-/* HORA */
+/* ================= HORA ================= */
 
 .mensaje small {
     display: block;
-
     margin-top: 5px;
-
     font-size: 12px;
-
     opacity: 0.7;
-
     text-align: right;
 }
 
@@ -392,7 +297,6 @@ body {
 
 ::-webkit-scrollbar-thumb {
     background: #b3e5fc;
-
     border-radius: 10px;
 }
 
@@ -427,7 +331,6 @@ body {
     .enviar {
         padding: 18px 25px;
     }
-
 }
 
 
@@ -439,22 +342,14 @@ body {
 
     .sidebar {
         position: relative;
-
         width: 100%;
-
         min-height: auto;
-
         padding: 25px 20px;
     }
 
     .sidebar nav {
         display: block;
-
         margin-top: 25px;
-    }
-
-    .sidebar ul {
-        width: 100%;
     }
 
     .sidebar li {
@@ -465,25 +360,17 @@ body {
         margin-top: 20px;
     }
 
-
     .chat {
         width: 100%;
-
         margin-left: 0;
-
         min-height: calc(100vh - 300px);
-
         flex-direction: column;
     }
 
-
     .pacientes {
         width: 100%;
-
         border-right: none;
-
         border-bottom: 1px solid #ddd;
-
         padding: 20px;
     }
 
@@ -491,43 +378,33 @@ body {
         margin-bottom: 18px;
     }
 
-
     .paciente {
         margin-bottom: 10px;
     }
 
-
     .cabecera-chat {
         height: 75px;
-
         padding: 18px 20px;
     }
-
 
     .mensajes {
         padding: 20px;
     }
 
-
     .mensaje {
         max-width: 85%;
     }
 
-
     .enviar {
         padding: 15px;
-
         gap: 10px;
     }
-
 
     .enviar input {
         padding: 13px 16px;
     }
 
-
     .enviar button {
         padding: 13px 20px;
     }
-
 }

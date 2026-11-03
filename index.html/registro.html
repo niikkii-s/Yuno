@@ -1,205 +1,209 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
+<title>Yuno - Registro</title>
 
-    <title>Yuno - Registro</title>
+<link rel="stylesheet" href="registro.css">
 
-    <link rel="stylesheet" href="registro.css">
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+
 </head>
 
 <body>
 
 <div class="container">
 
-    <h2>Crear cuenta</h2>
+<h2>Crear cuenta</h2>
 
+<input
+    type="text"
+    id="nombre"
+    name="nombre"
+    placeholder="Nombre completo"
+    required
+>
 
-    <!-- INFORMACIÓN PERSONAL -->
+<input
+    type="email"
+    id="correo"
+    name="correo"
+    placeholder="Correo"
+    required
+>
+
+<input
+    type="date"
+    id="fecha_nacimiento"
+    name="fecha_nacimiento"
+    required
+>
+
+<div class="password-container">
 
     <input
-        type="text"
-        id="nombre"
-        name="nombre"
-        placeholder="Nombre completo"
+        type="password"
+        id="contraseña"
+        name="contraseña"
+        placeholder="Contraseña"
         required
     >
-
-
-    <input
-        type="email"
-        id="correo"
-        name="correo"
-        placeholder="Correo"
-        required
-    >
-
-
-    <!-- EDAD -->
-
-    <input
-        type="number"
-        id="edad"
-        name="edad"
-        placeholder="Edad"
-        min="1"
-        max="120"
-        required
-    >
-
-
-    <!-- CONTRASEÑA -->
-
-    <div class="password-container">
-
-        <input
-            type="password"
-            id="contraseña"
-            name="contraseña"
-            placeholder="Contraseña"
-            required
-        >
-
-        <button
-            type="button"
-            class="mostrar-btn"
-            id="mostrarContraseña"
-        >
-            Mostrar
-        </button>
-
-    </div>
-
-
-    <!-- CONFIRMAR CONTRASEÑA -->
-
-    <div class="password-container">
-
-        <input
-            type="password"
-            id="confirmarContraseña"
-            name="confirmarContraseña"
-            placeholder="Confirmar contraseña"
-            required
-        >
-
-        <button
-            type="button"
-            class="mostrar-btn"
-            id="mostrarConfirmar"
-        >
-            Mostrar
-        </button>
-
-    </div>
-
-
-    <!-- DATOS FÍSICOS -->
-
-    <div class="fila">
-
-        <input
-            type="number"
-            id="peso"
-            name="peso"
-            placeholder="Peso (kg)"
-            min="1"
-            required
-        >
-
-        <input
-            type="number"
-            id="altura"
-            name="altura"
-            placeholder="Altura (cm)"
-            min="1"
-            required
-        >
-
-    </div>
-
-
-    <!-- OBJETIVO / DIETA -->
-
-    <select
-        id="objetivo"
-        name="objetivo"
-        required
-    >
-
-        <option
-            value=""
-            disabled
-            selected
-        >
-            Restricciones o dieta
-        </option>
-
-        <option value="Vegetariano">
-            Vegetariano
-        </option>
-
-        <option value="Vegano">
-            Vegano
-        </option>
-
-        <option value="Sin gluten">
-            Sin gluten
-        </option>
-
-        <option value="Intolerante a la lactosa">
-            Intolerante a la lactosa
-        </option>
-
-        <option value="Ninguna">
-            Ninguna
-        </option>
-
-    </select>
-
-
-    <!-- BOTÓN REGISTRARSE -->
 
     <button
         type="button"
-        class="btn"
-        id="btnRegistrar"
+        class="mostrar-btn"
+        id="mostrarContraseña"
     >
-        Registrarse
+        Mostrar
     </button>
-
-
-    <!-- MENSAJE -->
-
-    <p id="mensaje"></p>
-
-
-    <!-- VOLVER AL LOGIN -->
-
-    <a href="login.html">
-        Volver a la página principal
-    </a>
 
 </div>
 
+<div class="password-container">
+
+    <input
+        type="password"
+        id="confirmarContraseña"
+        name="confirmarContraseña"
+        placeholder="Confirmar contraseña"
+        required
+    >
+
+    <button
+        type="button"
+        class="mostrar-btn"
+        id="mostrarConfirmar"
+    >
+        Mostrar
+    </button>
+
+</div>
+
+<div class="fila">
+
+    <input
+        type="number"
+        id="peso"
+        name="peso"
+        placeholder="Peso (kg)"
+        min="1"
+        required
+    >
+
+    <input
+        type="number"
+        id="altura"
+        name="altura"
+        placeholder="Altura (cm)"
+        min="1"
+        required
+    >
+
+</div>
+
+<select
+    id="objetivo"
+    name="objetivo"
+    required
+>
+
+    <option
+        value=""
+        disabled
+        selected
+    >
+        Selecciona tu objetivo
+    </option>
+
+    <option value="Bajar de peso">
+        Bajar de peso
+    </option>
+
+    <option value="Ganar masa muscular">
+        Ganar masa muscular
+    </option>
+
+    <option value="Mantener peso">
+        Mantener peso
+    </option>
+
+    <option value="Mejorar alimentación">
+        Mejorar alimentación
+    </option>
+
+</select>
+
+<select
+    id="restriccion_dieta"
+    name="restriccion_dieta"
+    required
+>
+
+    <option
+        value=""
+        disabled
+        selected
+    >
+        Restricciones o dieta
+    </option>
+
+    <option value="Vegetariano">
+        Vegetariano
+    </option>
+
+    <option value="Vegano">
+        Vegano
+    </option>
+
+    <option value="Sin gluten">
+        Sin gluten
+    </option>
+
+    <option value="Intolerante a la lactosa">
+        Intolerante a la lactosa
+    </option>
+
+    <option value="Ninguna">
+        Ninguna
+    </option>
+
+</select>
+
+<button
+    type="button"
+    class="btn"
+    id="btnRegistrar"
+>
+    Registrarse
+</button>
+
+<p id="mensaje"></p>
+
+<a href="login.html">
+    Volver a la página principal
+</a>
+
+</div>
 
 <script>
-
-    // ==========================================
-    // ELEMENTOS
-    // ==========================================
 
     const boton =
         document.getElementById("btnRegistrar");
 
     const mensaje =
         document.getElementById("mensaje");
+
+        const fechaNacimiento =
+          document.getElementById("fecha_nacimiento");
+
+        const hoy =
+          new Date().toISOString().split("T")[0];
+
+fechaNacimiento.max = hoy;
 
     const contraseña =
         document.getElementById("contraseña");
@@ -212,11 +216,6 @@
 
     const mostrarConfirmar =
         document.getElementById("mostrarConfirmar");
-
-
-    // ==========================================
-    // MOSTRAR / OCULTAR CONTRASEÑA
-    // ==========================================
 
     mostrarContraseña.addEventListener("click", () => {
 
@@ -236,11 +235,6 @@
 
     });
 
-
-    // ==========================================
-    // MOSTRAR / OCULTAR CONFIRMACIÓN
-    // ==========================================
-
     mostrarConfirmar.addEventListener("click", () => {
 
         if (confirmarContraseña.type === "password") {
@@ -259,11 +253,6 @@
 
     });
 
-
-    // ==========================================
-    // REGISTRAR USUARIO
-    // ==========================================
-
     boton.addEventListener("click", async () => {
 
         const nombre =
@@ -272,8 +261,8 @@
         const correo =
             document.getElementById("correo").value.trim();
 
-        const edad =
-            document.getElementById("edad").value;
+        const fecha_nacimiento =
+            document.getElementById("fecha_nacimiento").value;
 
         const contraseñaValor =
             contraseña.value;
@@ -290,20 +279,19 @@
         const objetivo =
             document.getElementById("objetivo").value;
 
-
-        // ==========================================
-        // VALIDAR CAMPOS
-        // ==========================================
+        const restriccion_dieta =
+            document.getElementById("restriccion_dieta").value;
 
         if (
             nombre === "" ||
             correo === "" ||
-            edad === "" ||
+            fecha_nacimiento === "" ||
             contraseñaValor === "" ||
             confirmarContraseñaValor === "" ||
             peso === "" ||
             altura === "" ||
-            objetivo === ""
+            objetivo === "" ||
+            restriccion_dieta === ""
         ) {
 
             mensaje.textContent =
@@ -312,11 +300,6 @@
             return;
 
         }
-
-
-        // ==========================================
-        // VALIDAR CONTRASEÑAS
-        // ==========================================
 
         if (
             contraseñaValor !==
@@ -330,19 +313,9 @@
 
         }
 
-
-        // ==========================================
-        // DESACTIVAR BOTÓN
-        // ==========================================
-
         boton.disabled = true;
 
         boton.textContent = "Registrando...";
-
-
-        // ==========================================
-        // DATOS DEL USUARIO
-        // ==========================================
 
         const datosUsuario = {
 
@@ -350,27 +323,24 @@
 
             correo,
 
-            contraseña: contraseñaValor,
+            contrasena: contraseñaValor,
 
-            edad: Number(edad),
+            fecha_nacimiento,
 
             peso: Number(peso),
 
             altura: Number(altura),
 
-            objetivo
+            objetivo,
+
+            restriccion_dieta
 
         };
 
-
         try {
 
-            // ==========================================
-            // ENVIAR AL BACKEND
-            // ==========================================
-
             const respuesta = await fetch(
-                "http://172.29.80.73:3000/auth/register",
+                "http://192.168.1.62:3000/auth/register",
                 {
                     method: "POST",
 
@@ -383,41 +353,22 @@
                 }
             );
 
-
-            // ==========================================
-            // RESPUESTA DEL SERVIDOR
-            // ==========================================
-
             const datos =
                 await respuesta.json();
 
+if (respuesta.ok) {
 
-            // ==========================================
-            // REGISTRO CORRECTO
-            // ==========================================
+    mensaje.textContent =
+        datos.mensaje ||
+        "Usuario registrado correctamente.";
 
-            if (respuesta.ok) {
+    boton.textContent = "Registro exitoso";
 
-                mensaje.textContent =
-                    datos.mensaje ||
-                    "Usuario registrado correctamente.";
+    setTimeout(() => {
+        window.location.href = "perfil.html";
+    }, 1000);
 
-
-                setTimeout(() => {
-
-                    window.location.href =
-                        "perfil.html";
-
-                }, 1000);
-
-            }
-
-
-            // ==========================================
-            // ERROR DE REGISTRO
-            // ==========================================
-
-            else {
+            } else {
 
                 mensaje.textContent =
                     datos.mensaje ||
@@ -429,14 +380,7 @@
 
             }
 
-        }
-
-
-        // ==========================================
-        // ERROR DE CONEXIÓN
-        // ==========================================
-
-        catch (error) {
+        } catch (error) {
 
             console.error("Error:", error);
 

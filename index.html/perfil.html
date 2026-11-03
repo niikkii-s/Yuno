@@ -86,7 +86,7 @@
                 <section class="card">
 
                     <div class="icon">
-                        👤
+                        <img src="media/info1.png" alt="" aria-hidden="true">
                     </div>
 
                     <h3>
@@ -125,7 +125,7 @@
                 <section class="card">
 
                     <div class="icon">
-                        🎯
+                        <img src="media/obj1.png" alt="" aria-hidden="true">
                     </div>
 
                     <h3>
@@ -161,7 +161,7 @@
             <section id="mi-plan" class="seccion">
 
                 <div class="seccion-icon">
-                    🥗
+                    <img src="media/planes1.png" alt="" aria-hidden="true">
                 </div>
 
                 <div class="seccion-contenido">
@@ -208,74 +208,77 @@
             </section>
 
 
-            <!-- SEGUIMIENTO -->
-            <section id="seguimiento" class="seccion">
+ <!-- SEGUIMIENTO -->
+<section id="seguimiento" class="seccion">
+    <div class="seccion-icon">
+        <img src="media/seg3.png" alt="" aria-hidden="true">
+    </div>
 
-                <div class="seccion-icon">
-                    📊
-                </div>
+    <div class="seccion-contenido">
+        <h3>Seguimiento</h3>
 
-                <div class="seccion-contenido">
+        <p class="descripcion">
+            Revisa tu progreso y los cambios que has conseguido durante tu proceso.
+        </p>
 
-                    <h3>
-                        Seguimiento
-                    </h3>
+        <div class="progreso">
+            <div class="dato-progreso">
+                <span>Peso inicial</span>
+                <strong id="pesoInicial">-</strong>
+            </div>
 
-                    <p class="descripcion">
-                        Revisa tu progreso y los cambios que has conseguido
-                        durante tu proceso.
-                    </p>
+            <div class="dato-progreso">
+                <span>Peso actual</span>
+                <strong id="pesoSeguimiento">-</strong>
+            </div>
 
-                    <div class="progreso">
+            <div class="dato-progreso">
+                <span>Progreso</span>
+                <strong id="progresoUsuario">En seguimiento</strong>
+            </div>
+        </div>
 
-                        <div class="dato-progreso">
+        <h3>Resumen nutricional</h3>
 
-                            <span>
-                                Peso inicial
-                            </span>
+        <p class="descripcion">
+            Aquí puedes consultar las comidas que has registrado y sus nutrientes.
+        </p>
 
-                            <strong id="pesoInicial">
-                                -
-                            </strong>
+        <div class="progreso">
+            <div class="dato-progreso">
+                <span>Comidas registradas</span>
+                <strong id="comidasRegistradas">0</strong>
+            </div>
 
-                        </div>
+            <div class="dato-progreso">
+                <span>Calorías consumidas</span>
+                <strong id="caloriasConsumidas">0 kcal</strong>
+            </div>
 
-                        <div class="dato-progreso">
+            <div class="dato-progreso">
+                <span>Proteínas</span>
+                <strong id="proteinasConsumidas">0 g</strong>
+            </div>
 
-                            <span>
-                                Peso actual
-                            </span>
+            <div class="dato-progreso">
+                <span>Carbohidratos</span>
+                <strong id="carbohidratosConsumidos">0 g</strong>
+            </div>
 
-                            <strong id="pesoSeguimiento">
-                                -
-                            </strong>
-
-                        </div>
-
-                        <div class="dato-progreso">
-
-                            <span>
-                                Progreso
-                            </span>
-
-                            <strong id="progresoUsuario">
-                                En seguimiento
-                            </strong>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </section>
+            <div class="dato-progreso">
+                <span>Grasas</span>
+                <strong id="grasasConsumidas">0 g</strong>
+            </div>
+        </div>
+    </div>
+</section>
 
 
             <!-- ASESORÍAS -->
             <section id="asesorias" class="seccion">
 
                 <div class="seccion-icon">
-                    💬
+                    <img src="media/ase4.png" alt="" aria-hidden="true">
                 </div>
 
                 <div class="seccion-contenido">
@@ -342,130 +345,126 @@
     </div>
 
 
-    <!-- JAVASCRIPT -->
-    <script>
+<script>
+    const usuarioGuardado = localStorage.getItem("usuario");
 
-        const usuarioGuardado = localStorage.getItem("usuario");
+    if (usuarioGuardado) {
+        try {
+            const usuario = JSON.parse(usuarioGuardado);
 
-        if (usuarioGuardado) {
+            console.log("USUARIO GUARDADO:", usuario);
 
-            try {
+            document.getElementById("nombreUsuario").textContent =
+                usuario.nombre || "-";
 
-                const usuario = JSON.parse(usuarioGuardado);
+            document.getElementById("correoUsuario").textContent =
+                usuario.correo || "-";
 
-                /* INFORMACIÓN GENERAL */
+            const peso = Number(usuario.peso);
+            const alturaCm = Number(usuario.altura);
 
-                document.getElementById("nombreUsuario").textContent =
-                    usuario.nombre || "-";
+            const pesoValido =
+                usuario.peso !== null &&
+                usuario.peso !== "" &&
+                Number.isFinite(peso) &&
+                peso > 0;
 
-                document.getElementById("correoUsuario").textContent =
-                    usuario.correo || "-";
+            const alturaValida =
+                usuario.altura !== null &&
+                usuario.altura !== "" &&
+                Number.isFinite(alturaCm) &&
+                alturaCm > 0;
 
+            document.getElementById("pesoUsuario").textContent =
+                pesoValido ? peso + " kg" : "-";
 
-                /* PESO */
+            document.getElementById("pesoInicial").textContent =
+                pesoValido ? peso + " kg" : "-";
 
-                if (usuario.peso) {
+            document.getElementById("alturaUsuario").textContent =
+                alturaValida ? alturaCm + " cm" : "-";
 
-                    document.getElementById("pesoUsuario").textContent =
-                        usuario.peso + " kg";
+            if (pesoValido && alturaValida) {
+                const alturaMetros = alturaCm / 100;
+                const imc = peso / (alturaMetros * alturaMetros);
 
-                    document.getElementById("pesoSeguimiento").textContent =
-                        usuario.peso + " kg";
+                document.getElementById("imcUsuario").textContent =
+                    imc.toFixed(1);
+            } else {
+                document.getElementById("imcUsuario").textContent = "-";
+            }
 
-                    document.getElementById("pesoInicial").textContent =
-                        usuario.peso + " kg";
-                }
+            document.getElementById("objetivoUsuario").textContent =
+                usuario.objetivo || "-";
 
+            document.getElementById("pesoObjetivo").textContent =
+                usuario.pesoObjetivo
+                    ? usuario.pesoObjetivo + " kg"
+                    : "-";
 
-                /* ALTURA + IMC */
+            document.getElementById("actividadUsuario").textContent =
+                usuario.actividad || "-";
 
-                if (usuario.altura) {
+            document.getElementById("alimentacionUsuario").textContent =
+                usuario.alimentacion || usuario.restriccion_dieta || "-";
 
-                    document.getElementById("alturaUsuario").textContent =
-                        usuario.altura + " cm";
+            document.getElementById("planActual").textContent =
+                usuario.plan || "Plan saludable básico";
 
-                    if (usuario.peso) {
+            document.getElementById("objetivoPlan").textContent =
+                usuario.objetivo || "Mejorar hábitos";
 
-                        const alturaMetros =
-                            Number(usuario.altura) / 100;
-
-                        const peso =
-                            Number(usuario.peso);
-
-                        if (
-                            alturaMetros > 0 &&
-                            peso > 0
-                        ) {
-
-                            const imc =
-                                peso /
-                                (alturaMetros * alturaMetros);
-
-                            document.getElementById("imcUsuario").textContent =
-                                imc.toFixed(1);
+            if (usuario.id != null) {
+                fetch(`http://192.168.1.62:3000/registros/resumen/${usuario.id}`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error("No se pudo obtener el seguimiento");
                         }
-                    }
-                }
 
+                        return response.json();
+                    })
+                    .then(datos => {
+                        document.getElementById("pesoSeguimiento").textContent =
+                            datos.peso != null ? datos.peso + " kg" : "-";
 
-                /* OBJETIVOS */
+                        document.getElementById("comidasRegistradas").textContent =
+                            datos.comidas_registradas ?? 0;
 
-                document.getElementById("objetivoUsuario").textContent =
-                    usuario.objetivo || "-";
+                        document.getElementById("caloriasConsumidas").textContent =
+                            Number(datos.calorias_consumidas ?? 0).toFixed(2) + " kcal";
 
-                document.getElementById("pesoObjetivo").textContent =
-                    usuario.pesoObjetivo
-                        ? usuario.pesoObjetivo + " kg"
-                        : "-";
+                        document.getElementById("proteinasConsumidas").textContent =
+                            Number(datos.proteinas_consumidas ?? 0).toFixed(2) + " g";
 
-                document.getElementById("actividadUsuario").textContent =
-                    usuario.actividad || "-";
+                        document.getElementById("carbohidratosConsumidos").textContent =
+                            Number(datos.carbohidratos_consumidos ?? 0).toFixed(2) + " g";
 
-                document.getElementById("alimentacionUsuario").textContent =
-                    usuario.alimentacion || "-";
-
-
-                /* PLAN */
-
-                document.getElementById("planActual").textContent =
-                    usuario.plan || "Plan saludable básico";
-
-                document.getElementById("objetivoPlan").textContent =
-                    usuario.objetivo || "Mejorar hábitos";
-
+                        document.getElementById("grasasConsumidas").textContent =
+                            Number(datos.grasas_consumidas ?? 0).toFixed(2) + " g";
+                    })
+                    .catch(error => {
+                        console.error("Error al cargar el seguimiento:", error);
+                    });
             }
-
-            catch (error) {
-
-                console.log(
-                    "No se pudo cargar la información del usuario."
-                );
-
-            }
-
+        } catch (error) {
+            console.error("No se pudo cargar la información del usuario:", error);
         }
+    } else {
+        console.warn("No hay una sesión de usuario guardada.");
+    }
 
+    const enlacesMenu = document.querySelectorAll(".sidebar ul li a");
 
-        /* NAVEGACIÓN DEL MENÚ */
-
-        const enlacesMenu =
-            document.querySelectorAll(".sidebar ul li a");
-
-        enlacesMenu.forEach(enlace => {
-
-            enlace.addEventListener("click", function () {
-
-                enlacesMenu.forEach(item => {
-                    item.classList.remove("activo");
-                });
-
-                this.classList.add("activo");
-
+    enlacesMenu.forEach(enlace => {
+        enlace.addEventListener("click", function () {
+            enlacesMenu.forEach(item => {
+                item.classList.remove("activo");
             });
 
+            this.classList.add("activo");
         });
-
-    </script>
+    });
+</script>
 
 </body>
 

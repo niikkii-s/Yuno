@@ -225,7 +225,7 @@
             // ==========================================
 
             const respuesta = await fetch(
-                "http://172.29.80.73:3000/auth/login",
+                "http://192.168.1.62:3000/auth/login",
                 {
                     method: "POST",
 
@@ -234,10 +234,8 @@
                     },
 
                     body: JSON.stringify({
-
-                        correo: usuarioValor,
-
-                        contraseña: contraseñaValor
+                      correo: usuarioValor,
+                      contrasena: contraseñaValor
 
                     })
                 }
@@ -264,26 +262,26 @@
 
                 // Guardar usuario si el backend lo devuelve
 
-                if (datos.usuario) {
+            if (!datos.usuario || datos.usuario.id == null) {
+              mensaje.textContent = "El servidor no devolvió los datos completos del usuario.";
+              boton.disabled = false;
+              boton.textContent = "Acceder";
+            return;
+        }
 
-                    localStorage.setItem(
-                        "usuario",
-                        JSON.stringify(datos.usuario)
-                    );
-
-                }
+           localStorage.setItem(
+              "usuario",
+              JSON.stringify(datos.usuario)
+);
 
 
                 // Guardar token si el backend lo devuelve
 
-                if (datos.token) {
-
-                    localStorage.setItem(
-                        "token",
-                        datos.token
-                    );
-
-                }
+if (datos.token) {
+    localStorage.setItem("token", datos.token);
+} else {
+    localStorage.removeItem("token");
+}
 
 
                 // Ir al perfil

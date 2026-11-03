@@ -26,49 +26,48 @@
 
     <!-- SIDEBAR -->
 
-<aside class="sidebar">
+    <aside class="sidebar">
 
-    <h1 class="logo">
-        <a href="index-doc.html">Yuno</a>
-    </h1>
+        <h1 class="logo">
+            <a href="index-doc.html">Yuno</a>
+        </h1>
 
-    <nav>
+        <nav>
 
-        <ul>
+            <ul>
 
-            <li>
-                <a href="perfil-doc.html" class="activo">
-                    Mi perfil
-                </a>
-            </li>
+                <li>
+                    <a href="perfil-doc.html" class="activo">
+                        Mi perfil
+                    </a>
+                </li>
 
-            <li>
-                <a href="chat-doc.html">
-                    Chat
-                </a>
-            </li>
+                <li>
+                    <a href="chat-doc.html">
+                        Chat
+                    </a>
+                </li>
 
-            <li>
-                <a href="pacientes.html">
-                    Pacientes
-                </a>
-            </li>
+                <li>
+                    <a href="pacientes.html">
+                        Pacientes
+                    </a>
+                </li>
 
-        </ul>
+            </ul>
 
-    </nav>
+        </nav>
 
+        <!-- CONFIGURACIÓN -->
 
-    <!-- CONFIGURACIÓN -->
+        <a
+            href="config-doc.html"
+            class="configuracion"
+        >
+            Configuración
+        </a>
 
-    <a
-        href="config-doc.html"
-        class="configuracion"
-    >
-        Configuración
-    </a>
-
-</aside>
+    </aside>
 
 
     <!-- CONTENIDO -->
@@ -88,12 +87,12 @@
 
         <div class="cards">
 
-            <!-- INFORMACIÓN -->
+            <!-- INFORMACIÓN PROFESIONAL -->
 
             <div class="card">
 
                 <div class="icon">
-                    👨‍⚕️
+                    <img src="" alt="" aria-hidden="true">
                 </div>
 
                 <h3>
@@ -156,7 +155,7 @@
             <div class="card">
 
                 <div class="icon">
-                    📊
+                    <img src="" alt="" aria-hidden="true">
                 </div>
 
                 <h3>
@@ -281,37 +280,6 @@
 
     document.getElementById("mensajesPendientes").textContent =
         usuario?.mensajesPendientes || 0;
-
-
-    // ==========================================
-    // CERRAR SESIÓN
-    // ==========================================
-
-    const botonCerrarSesion =
-        document.querySelector(".logout");
-
-
-    botonCerrarSesion.addEventListener("click", (evento) => {
-
-        evento.preventDefault();
-
-
-        const confirmar =
-            confirm("¿Estás seguro de que quieres cerrar sesión?");
-
-
-        if (!confirmar) {
-            return;
-        }
-
-
-        localStorage.removeItem("usuario");
-        localStorage.removeItem("token");
-
-
-        window.location.href = "login-doc.html";
-
-    });
 
 </script>
 
